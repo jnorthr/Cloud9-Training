@@ -1,0 +1,8 @@
+---
+applications:
+- name: cloud9
+  memory: 256M
+  instances: 1
+  host: cloud9
+  domain: de.a9sapp.eu
+  path: .

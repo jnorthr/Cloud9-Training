@@ -1,0 +1,82 @@
+// cloud9 build.gradle
+import org.apache.ivy.plugins.resolver.URLResolver
+
+apply plugin: 'groovy'
+apply plugin: 'war'
+apply plugin: 'cloudfoundry'
+
+def compatibilityVersion = 1.6
+sourceCompatibility = compatibilityVersion
+targetCompatibility = compatibilityVersion
+
+defaultTasks 'clean', 'prepare', 'cf-login', 'build', 'war', 'copyWar', 'zipAll', 'copyZip', 'war', 'copyWar',  'cf-push' 
+// 'zipAll', does not work on windowsXP 
+
+// war property
+webAppDirName = file('war')
+war.duplicatesStrategy = "EXCLUDE"
+
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath group: 'org.cloudfoundry', name: 'cf-gradle-plugin', version: '1.0.0'
+  }
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        output.classesDir file('war/WEB-INF/classes')
+    }
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.2.2'
+    testCompile 'javax.servlet:servlet-api:2.5'
+}
+
+
+// war file does not need this closure as the CF command ignores build.gradle
+cloudfoundry {
+  //username=''  				// if not declared, defaults to ~/.gradle/gradle.properties like cf.username=men@work.com
+  //password=''  				// don't put quote marks around the value after the =            cf.password=*******
+  target='https://api.de.a9s.eu' 		// cloud foundry V2 target for http://www.anynines.com/
+  organization = 'james_northrop_orange_fr'
+  space = 'development'
+  file = new File('war/WEB-INF/downloads/anynines.war')
+  uri = 'http://cloud9.de.a9sapp.eu'
+  application = 'cloud9'
+  memory = 256
+  instances = 1
+}
+
+task prepare(type: Delete) {
+  delete 'war/WEB-INF/downloads'
+}
+
+
+
+task copyWar(type: Copy) {
+    from 'build/libs'
+    into 'war/WEB-INF/downloads'
+}
+
+task copyZip(type: Copy) {
+    from 'build/distributions'
+    into 'war/WEB-INF/downloads'
+}
+
+
+task zipAll(type: Zip) {
+    from projectDir
+    exclude 'build/**'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion '1.11'
+}

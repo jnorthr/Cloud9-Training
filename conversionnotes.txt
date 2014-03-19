@@ -1,0 +1,44 @@
+// change into folder holding the asciidoc text file and run conversion there...
+cd /Volumes/DURACELL/anynines/war/asciidocs 
+$ asciidoctor -b html5  -a icons  signup.adoc  -D ../WEB-INF/pages/  -s
+
+// command option 
+-a icons
+// -a triggers css generation for image icon
+
+// the -s option suppresses the normal header/trailer html, so the result
+// can be themed by user-provided css
+-s   
+
+// this option declares the output folder to receive the translated results
+-D
+
+// anynines blue=#505d78 / 5A6987
+// orange E4813D  brown=9E470A
+
+	url('../images/anynines-bar.png') 
+   position:absolute;
+   top:50%;
+   left:50%;
+   margin-top:-25px;
+   margin-left:-25px;	
+
+            <img src="/images/anynines.png" alt="Anynines - a PaaS platform for Cloud Foundry projects">
+
+#header {
+	padding: 10px;
+    height: 200px;
+	min-width: 800px;
+	background-color:#505d78;
+    
+	background: #505d78 url('../images/gray-shade.png') repeat-x bottom,
+    url('../images/anynines-logo.png') no-repeat center center,
+    url('../images/anynines.png') no-repeat 0 0;
+}
+
+Floor says the colors are:
+orange ec834e
+blue 576a88
+dark blue 515d79
+dark grey 414042
+lite grey e6e7e8
