@@ -10,6 +10,11 @@ body {
 .dg {color: #414042;}
 .lg {color: #E6E7E8;}
 
+.shadow {
+    -moz-box-shadow: 3px 3px 4px #111; 
+    -webkit-box-shadow: 2px 2px 3px #111; 
+    box-shadow: 2px 2px 3px #111;
+}
 
 .room { padding-left: 60px; } 
 .orange {color: #FF7400;}
@@ -21,8 +26,8 @@ body {
 }
 
 h1 {
-    font-family: 'Tangerine', serif;
-    font-size: 40px;
+    font-family: 'Lato', sans-serif;
+    font-size: 32px;
 	color: #FF7400;
 	border-bottom: black 3px dotted;
       text-shadow: 1px 1px 2px #000; 
@@ -30,8 +35,8 @@ h1 {
 }
 
 h2 {
-      font-family: 'Tangerine', serif;
-      font-size: 36px;
+      font-family: 'Lato', sans-serif;
+      font-size: 28px;
 	padding-top: 10px !important;
 	color: #FF7400;
 	border-bottom: black 2px dotted;
@@ -39,8 +44,8 @@ h2 {
 }
 
 h3 {
-      font-family: 'Tangerine', serif;
-      font-size: 32px;
+      font-family: 'Lato', sans-serif;
+      font-size: 24px;
 	color: #FF7400;
       text-shadow: 1px 1px 2px #000; 
 	margin-top: 60px !important;
@@ -48,9 +53,9 @@ h3 {
 }
 
 h4 {
-      font-family: 'Tangerine', serif;
-      font-size: 24px;
-	color: #FF7400;
+      font-family: 'Lato', sans-serif;
+      font-size: 20px;
+      color: #FF7400;
       text-shadow: 1px 1px 2px #111; 
 }
 
@@ -184,7 +189,7 @@ a:hover {
 }
 #sidebox {
       float: right;
-      background-color: white;
+      background-color: #E6E7E8;
       margin: 10px;
       padding: 10px;
 

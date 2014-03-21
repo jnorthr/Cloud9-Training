@@ -1,4 +1,4 @@
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
     <head>
         <title>Anynines Sample Project</title>
 		<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="/css/main.css"/>
         <link href='http://fonts.googleapis.com/css?family=Kotta+One' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&effect=emboss">
+        <link href='http://fonts.googleapis.com/css?family=Lato:700' rel='stylesheet' type='text/css'>
     </head>
     <body>
             <div id="header">

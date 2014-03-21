@@ -2,29 +2,24 @@
 import org.apache.ivy.plugins.resolver.URLResolver
 
 apply plugin: 'groovy'
-apply plugin: 'war'
-apply plugin: 'cloudfoundry'
 apply plugin: 'asciidoctor'
 
 def compatibilityVersion = 1.6
 sourceCompatibility = compatibilityVersion
 targetCompatibility = compatibilityVersion
-defaultTasks 'clean', 'build','war', 'cf-login','cf-push' 
+//defaultTasks 'clean', 'build'        
 
-// war property
-webAppDirName = file('war')
-war.duplicatesStrategy = "EXCLUDE"
 
 buildscript {
   repositories {
     mavenCentral()
-    //maven { url "https://oss.sonatype.org/content/repositories/springsource-milestones" }
-   // mavenRepo name: 'Bintray Asciidoctor repo', url: 'http://dl.bintray.com/content/aalmiray/asciidoctor'
-    //mavenRepo name: 'Bintray JCenter', url: 'http://jcenter.bintray.com'
+    maven { url "https://oss.sonatype.org/content/repositories/springsource-milestones" }
+    mavenRepo name: 'Bintray Asciidoctor repo', url: 'http://dl.bintray.com/content/aalmiray/asciidoctor'
+    mavenRepo name: 'Bintray JCenter', url: 'http://jcenter.bintray.com'
   }
   dependencies {
-    classpath group: 'org.cloudfoundry', name: 'cf-gradle-plugin', version: '1.0.2'
-    //classpath 'org.asciidoctor:asciidoctor-gradle-plugin:0.7.0'
+    classpath group: 'org.cloudfoundry', name: 'cf-gradle-plugin', version: '1.0.0'
+    classpath 'org.asciidoctor:asciidoctor-gradle-plugin:0.7.0'
   }
 }
 
@@ -43,26 +38,19 @@ dependencies {
     testCompile 'javax.servlet:servlet-api:2.5'
 }
 
-// war file does not need this closure as the CF command ignores build.gradle
-cloudfoundry {
-  //username=''
-  //password=''
-  target='https://api.de.a9s.eu' // cloud foundry V2 target for http://www.anynines.com/
- organization='james_northrop_orange_fr'
-  space = 'development'
-  file = new File('build/libs/anynines.war')
-  uri = 'http://cloud9.de.a9sapp.eu'
-  //uri = 'http://caelyftemplate.cfapps.io'
-  application = 'cloud9'
-  memory = 512
-  instances = 1
-}
-
-
-
-task copyWar(type: Copy) {
-    from 'build/libs'
-    into '$projectDir/war/downloads'
+asciidoctor {
+  sourceDir  = new File("war/asciidocs")
+  outputDir = new File("$buildDir/docs")
+  options = [
+    header_footer : false,
+    eruby: 'erubis',
+    attributes: [
+      'source-highlighter': 'coderay',
+      toc: '',
+      idprefix: '',
+      idseparator: '-'
+    ]
+  ]
 }
 
 task wrapper(type: Wrapper) {
