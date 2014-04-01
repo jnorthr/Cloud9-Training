@@ -9,8 +9,11 @@ def compatibilityVersion = 1.6
 sourceCompatibility = compatibilityVersion
 targetCompatibility = compatibilityVersion
 
-defaultTasks 'clean', 'prepare', 'cf-login', 'build', 'war', 'copyWar', 'zipAll', 'copyZip', 'war', 'copyWar',  'cf-push' 
+defaultTasks 'copyWar', 'zipAll', 'copyZip',  'clean', 'cf-login',  'build', 'war', 'cf-push', 'cf-apps' 
 // 'zipAll', does not work on windowsXP 
+// gradlew cf-delete
+// gradlew clean cleanup build war copyWar zipAll copyZip 
+// gradlew war cf-push cf-apps
 
 // war property
 webAppDirName = file('war')
@@ -43,22 +46,21 @@ dependencies {
 
 // war file does not need this closure as the CF command ignores build.gradle
 cloudfoundry {
-  //username=''  				// if not declared, defaults to ~/.gradle/gradle.properties like cf.username=men@work.com
-  //password=''  				// don't put quote marks around the value after the =            cf.password=*******
-  target='https://api.de.a9s.eu' 		// cloud foundry V2 target for http://www.anynines.com/
+  //username=''  	// if not declared, defaults to ~/.gradle/gradle.properties like cf.username=men@work.com
+  //password=''  	// don't put quote marks around the value after the =            cf.password=*******
+  target='https://api.de.a9s.eu' 		// cloud foundry api target address for http://www.anynines.com/
   organization = 'james_northrop_orange_fr'
   space = 'development'
-  file = new File('war/WEB-INF/downloads/anynines.war')
+  file = new File("$buildDir/libs/anynines.war")
   uri = 'http://cloud9.de.a9sapp.eu'
   application = 'cloud9'
   memory = 256
   instances = 1
 }
 
-task prepare(type: Delete) {
-  delete 'war/WEB-INF/downloads'
+task cleanup(type: Delete) {
+  delete 'war/WEB-INF/downloads/anynines.war', 'war/WEB-INF/downloads/anynines.zip'
 }
-
 
 
 task copyWar(type: Copy) {
@@ -75,6 +77,7 @@ task copyZip(type: Copy) {
 task zipAll(type: Zip) {
     from projectDir
     exclude 'build/**'
+    exclude 'manifest.yml'
 }
 
 task wrapper(type: Wrapper) {

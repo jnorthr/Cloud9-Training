@@ -1,0 +1,49 @@
+= Help Page
+Floor Drees <fdrees@anynines.com>
+v1.0, April., 2014: First version
+:language: html
+:imagesdir: ../../images
+:iconsdir: ../../images/icons
+:linkattrs:
+:icons: font
+:toc: right
+:keywords: documentation, team, anynines, help
+:description: A series of notes and references from our + 
+documentation team. To give you a better understanding of our platform, we've gathered together some links, documents, talks and references that explain things a bit better.
+
+== Purpose
+
+Here's a series of notes and references from our documentation team. To give you a better understanding of our Anynines eco-system, we've gathered together some links, documents, talks and references that explain things a bit better.
+
+== We'd Love To Hear From You
+
+image:../../images/form.png[Anynines Signup Page, width="440"]
+
+== Technical Slideshows
+
+TIP: To view a slideshow within this page, click the left/right grey arrow buttons below.
+ 
++++<table><tr><td><iframe src="http://www.slideshare.net/slideshow/embed_code/28514344" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/cdavisafc/cloud-foundry-technical-overview" title="Cloud Foundry Technical Overview" target="_blank">Cloud Foundry Technical Overview</a> </strong> from <strong><a href="http://www.slideshare.net/cdavisafc" target="_blank">Cornelia Davis</a></strong> </div></td>
+<td><iframe src="http://www.slideshare.net/slideshow/embed_code/30103333" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/platformcf/pivotal-cf-the-platform-for-building-great-software" title="The Platform for Building Great Software" target="_blank">The Platform for Building Great Software</a> </strong> from <strong><a href="http://www.slideshare.net/platformcf" target="_blank">Platform CF</a></strong></div></td></tr><tr><td><iframe src="http://www.slideshare.net/slideshow/embed_code/31340548" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/anynines/getting-started-with-anynines" title="Getting started with anynines - The cf command line tool" target="_blank">Getting started with anynines - The cf cmd line tool</a> </strong> from <strong><a href="http://www.slideshare.net/anynines" target="_blank">anynines</a></strong> </div></td>
+<td><iframe width="427" height="390" src="//www.youtube.com/embed/nOuxMHJIKFU" frameborder="0" allowfullscreen=""></iframe>
+</td></tr>
+<tr><td><a href="https://www.facebook.com/anyninescom"><img src="../../images/facebook.png" width="427" height="279" ></a><br /><b class="mid">Anynines on Facebook</b><br /></td><td><a href="https://twitter.com/anynines"><img src="../../images/twitter.png" width="427" height="270" ></a><br /><b class="mid">Anynines on Twitter</b><br /></td></tr>
+<tr><td><br /><a href="https://support.anynines.com/home"><img src="../../images/deploy.png" width="427" height="280" ></a><br /><b class="mid">How To Deploy Your Ruby App</b><br /></td>
+<td><br /><a href="http://caelyf.de.a9sapp.eu"><img src="../../images/caelyffrontpage.png" width="427" height="280" ></a><br /><b class="mid">How To Deploy Your Groovy / Java Apps</b><br /></td>
+</tr></table>+++
+
+
+== Our Team
+
+We'd like to introduce you to our team. These clever clogs turn the wheels that make your app crank out the goods ! Meet us here http://www.anynines.com/team[Our Team].
+
+
+== Contact Us
+
+You can contact our author {author} at {email}. {firstname} loves to hear from other chroniclers.
+
+P.S. And yes, what better name to describe the foundation of Anynines than {firstname} ?   :-D
+
+
+image::../../images/footer.png[Anynines - Protecting Your Privacy, width="998", role="thumb"] 
+

@@ -9,12 +9,12 @@
 <div id="sidebox" class="roundPinkBorder shadow">
     <table>
         <tr>
-            <td><a href="/downloads/anynines.zip"><img src="/images/icon-download.png" alt="Anynines complete project"></a></td>
-            <td><a href="/downloads/anynines.zip">Anynines.zip</a></td>
+            <td><a href="/anynines.zip"><img src="/images/icon-download.png" alt="Anynines complete project"></a></td>
+            <td><a href="/anynines.zip">Anynines.zip</a></td>
         </tr>
         <tr>
-            <td><a href="/downloads/anynines.war"><img src="/images/icon-download.png" alt="sample war file"></a></td>
-            <td><a href="/downloads/anynines.war">Anynines Sample.war</a></td>
+            <td><a href="/anynines.war"><img src="/images/icon-download.png" alt="sample war file"></a></td>
+            <td><a href="/anynines.war">Anynines Sample.war</a></td>
         </tr>
     </table>
 </div>
@@ -52,8 +52,8 @@
 
 <h3>Artifacts</h3>
 <ul>
-    <li>Anynines WAR: <a href="/downloads/anynines.war">Anynines Sample.war</a> is a deployable war file packaged according to standards. Use the <b>CF</b> tool to push it to our servers.</li>
-    <li>Anynines ZIP: <a href="/downloads/anynines.zip">A zip file</a> with this project compressed into .zip archive. It has the complete content of the website you are reading now. It will give you an excellent starting point, and allow you to build this project again and/or play around until you feel comfortable doing deployments.</li>
+    <li>Anynines WAR: <a href="/anynines.war">Anynines Sample.war</a> is a deployable war file packaged according to standards. Use the <b>CF</b> tool to push it to our servers.</li>
+    <li>Anynines ZIP: <a href="/anynines.zip">A zip file</a> with this project compressed into .zip archive. It has the complete content of the website you are reading now. It will give you an excellent starting point, and allow you to build this project again and/or play around until you feel comfortable doing deployments.</li>
 </ul>
 
 

@@ -1,0 +1,1 @@
+// signup.adoc is named .bak becasue here are some patches in the already generated signup.html file in the /pages folder; until we can learn how to tell asciidoctor what we want, better NOT re-generate the signup.html for the moment. 

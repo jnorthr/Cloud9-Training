@@ -1,6 +1,7 @@
 // change into folder holding the asciidoc text file and run conversion there...
 cd /Volumes/DURACELL/anynines/war/asciidocs 
 $ asciidoctor -b html5  -a icons  signup.adoc  -D ../WEB-INF/pages/  -s
+$ asciidoctor -b html5  -a icons  facts.adoc  -D ../WEB-INF/pages/  -s
 
 // command option 
 -a icons
