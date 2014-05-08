@@ -1,90 +1,271 @@
-= Upload Tutorial For Anynines
+= Automatic Upload Tutorial For Anynines
 Jim Northrop <james.northrop@orange.fr>; Anynines <helpdesk@anynines.com>
 v1.0, 2014-03-20: First draft
-:iconsdir: ../../images/icons
-:description: This tutorial guide will show you how to deploy an application to the PaaS service offered by www.anynines.com
-:keywords: guide,tutorial,quick,start, reference,paas,any,nines,anynines,upload,tut
 :language: html
+:imagesdir: ../../images
+:iconsdir: ../../images/icons
 :linkattrs:
+:icons: font
 :toc: right
-:sectlinks:
+:keywords: gradle,plugin,upload,documentation, team, anynines, help,guide,tutorial,quick,start,command,line, reference, paas,any,nines, anynines,manual,tut
+:description: Notes from a sample upload session. A series of notes, joblogs and references from our + 
+documentation team. To give you a better understanding of the automatic upload process to our platform, we've included notes about what you need to change in the build.gradle script.
 
+WARNING: Before using this guide, the *_anynines.zip_* file must be available in your local system.
 
-== Your Upload Tutorial
+== Your Automatic Upload Tutorial
 
 === Introduction
 
-To make use of the princles of cloud computing, it's vital to be able to deploy business applications to a cloud computing service. These applications typically let our customers conduct business with us. The services we provide to them can be built on a layer of technologies that are based on standards used by the industry. 
-
-Such solutions as the http://cloudfoundry.org/index.html[Cloud Foundry Platform-As-A-Service (PaaS)], offer a standard set of features, services and attachment points. http://www.anynines.com[Anynines] offers you and your clients this solutuion. 
-
-NOTE: We assume you've reviewed available technologies and found http://cloudfoundry.org/index.html[Cloud Foundry] to be a good choice. 
-
-
-=== Purpose
-
-This overview has step-by-step instructions on how to deploy an application to http://www.anynines.com[Anynines]. The programming languages and tools we've used in our samples are publicly available and open source products that incur no fees or charges. In these examples, no programming languages are used. You'll need those after you become familiar with Anynines. Consult our http://www.anynines.com[Anynines Home Page] for more details.
-
-
-WARNING: To complete the other tasks in this tutorial, you must hold a current http://www.anynines.com[Anynines] account.
-
-
-TIP: This is a tip  to see how they look !
-
-IMPORTANT: Hey man, this is *Important* !
-
-CAUTION: Be ware of this - caution
+To get you up to speed and familiar with the anynines upload process, we've made this project with everything needed to make it happen. We won't focus on the technical issues or implementation steps to do this. We'll only cover the changes we need in our automated build script. After a few changes to the build script, we can upload a full application to anynines.com using a single command.
 
 
 === What You Need
 
-* Have a membership account with Anynines. Follow our link:/signup[Sign Up] tutorial if you need to join us.
-* Have the email address and password of your Anynines membership.
-* Have a working internet connection.
-* Have and know how to use a text editor.
-* Have downloaded either ( or both of ) our sample war file or the full zip file from our download page.
+++++
+<ul>
+<li>Have a membership account with Anynines. Follow our <a href="/signup">Sign Up</a> tutorial if you need to join us.</li>
+<li>Have the email address and password of your Anynines membership.</li>
+<li>Have a working internet connection.</li>
+<li>Have a plain text editor.</li>
+<li>Have downloaded the full zip file from our <a href="/download">download page</a>.</li>
+</ul>
+++++
+
+=== Get Ready
+
+==== Get Zip File
+
+Download the full zip file from our link:download[download page].
+
+==== Move It To Convenient Location
+
+Create a new diretory folder in a convenient location on your system. Move or copy the zip file to it.
+
+==== Uncompress The Zip File
+
+The zip file holds the compressed content of our project. It is a standard format, compressed file. You should be able to uncompress / unzip it after you move it using typical tools you already have.
+
+==== Review Contents
+
+image:../../images/folderStructure.png[Directory folder structure after decompression, float="right"] After the project is decompressed into your target location, it will have a folder name of *anynines*. Here's an image showing typical project content. Your version may differ as we evolve this tutorial. Don't worry! This is normal.
+
+There are several directories of pieces we use to build our application. To learn more about how we structure our project, please review the *Project Components* topic or skip to the section below to learn about editing the gradle build script.
 
 
-== Your Choice
 
-We've decided to break this tutorial into two pieces. You can follow either trail you choose. They both lead to the same destination : A Successfully Running App on Anynines. Use the automated trail for the quickest deployment or choose the manual trail for a deeper understanding.
+== Project Components
+
+The full build tool we use to upload our app is included here. It's the *gradle* build tool. We've created a small wrapper version for you and put that into your project. You don't even need to know this level of detail. There are no changes needed in any of the following pieces. If you're in a hurry, skip to the section below about editing the gradle build script.
+
+=== Use The Gradle Wrapper
+
+Just for your information, if you'd like more info about the gradle build tool and it's purposes, and what it does +
+ read this : http://java.dzone.com/articles/use-gradle-wrapper-and-stop[The Gradle Wrapper] +
+
+== Gradle Build Script Editing
+
+=== Values To Be Changed
+
+We need to adjust these items before we try to upload an app
+
+++++
+<ul>
+<li>username - your email address goes here</li>
+<li>password - your password for Anynines goes here</li>
+<li>your application name in both the URI and APPLICATION declarations - pick your app's name here</li>
+<li>organization name - a way to structure your online apps</li>
+<li>FILE location (possibly) - probably won't need to fix this, but just in case</li>
+</ul>
+++++
+
+=== Edit This
+
+image:../../images/build1.png[Gradle Build Script, float="right", role="thumb"] 
+
+Ok, so here is where we need to adjust several values in our build script. 
+
+Take a look at the image here that shows a fragment of our +build.gradle+ text file. 
+
+The items we need to fix can be found within the +{+ and the +}+ characters after the word 'cloudfoundry', which is what our Anynines platform uses. It's about half way down your script.
 
 
-=== The Manual Trail - the CF Deployment Tool
+=== Fix Username
+
+image:../../images/build2.png[Gradle Build Script, float="right", role="thumb" ] 
+
+In this example, our ficticious friend Martin used his email address to deploy his 'hotdog' app to Anynines. 
+
+You'll need to remove his email address within the ' single quote marks and replace it with the email address you used to join Anynines. 
+
+This example was for some testing we did earlier.
+
+''''
+
+TIP: Gradle scripts allow remarks and comments when double / char.s are before the comment, i.e. //
+
+++++
+<br />
+++++
+
+Your copy of our +build.gradle+ text file might show *//username=''  ''* and the +//+ bit makes this line of text invisible to the gradle tool. Gradle treats text after the +//+ sequence as a remark or comment.
+
+So if you see +//+ just remove it and put your email address within the +++' '+++ marks. You should end up with something like *username=''men@work.com''*  but with your email. 
 
 
-Since you want more detail, let's jump to a specific tutorial to give you that. link:/uploadmanual[Click Here]. 
+=== Fix Password
 
-So you've already installed the *CF* command-line tool, then you should take the sample war file ( see above ). (To install the *CF* tool, follow our links on our home page.) It's a file with all the pieces you'll need to successfully deploy an app to Anynines. It doesn't have the extra bits to automate the build/re-build or automatic upload to our anynines servers. If you want to build this app or tinker a bit, you'll need the zip file. Or you can take both :-)
+In our example, our ficticious friend Martin used his password and you can see the +***+ value within +''+ marks. 
 
-When your browser finishes the download, open the containing folder where your browser put our war file. You can try an upload to anynines from that folder, or you might want to make another folder somewhere else on your system, then copy or move the sample war file to your new folder. After that read our link:/upload[Upload] tutorial.
+If you see +//+ in your script just remove them and put your password within the *''* marks. You should end up with something like 
+
+[quote]
+password='' monkeyshines ''
+
+but with your password there.
+
+=== Fix Organization
+
+image:../../images/build3.png[Gradle Build Script]
+
+After you become familiar with cloud foundry application structures, you can pick more useful names for your organization. 
+
+For now, just use your email address as the organization but replace dots and @ chars with _ underscore chars. 
+
+For example, _martin.j.quickman@googlemail.com_ became _martin_j_quickman_googlemail_com_
+
+=== Fix Name of Your App
+
+image:../../images/build4.png[Gradle Build Script]
+
+Want to deploy another app named +hotdog+ ? No ? Well better change martin's +hotdog+ app name to your own choice. Put that in both the middle of the uri name and also as the application name.
+
+=== Fix Name of Your War File
+
+image:../../images/build5.png[Gradle Build Script]
+
+You might not need to change this. If you've unzipped our archive without changing the name of the folder from +anynines+ to something else, then you can leave the war file name as it is. 
+
+The  +gradlew war+ command makes an archive of our application. This archive is known as a web archive or war. The war file name is the same as the name of our project diretory. If you renamed our +anynines+ project folder into a folder named +fred17+ then the +gradlew war+ command would create a new deployment file of +./fred17/build/libs/fred17.war+ .
 
 
+=== Connect To Anynines
+
+Before we can upload anything, we must connect to anynines, then present our credentials in a login process. You should only need to do this once. After the first time, a small credentials token is stored in your system. This token is used in other steps to let us know who you are and what your choices are.
+
+The credentials we need to log in are stored in the 'cloudfoundry {}' declaration. This way we don't need to repeat the same stuff again and again.
+
+==== Log In
+
+From your terminal session, you'll need to change into the directory created when you unzipped our archive. Typically, this will be the +anynines+ folder. When your session points to this folder, several gradle wrapper commands are available, one for windows systems and another for apple & linux systems. The command to run the build tool is +gradlew+. We use it to 'talk' to our anynines server.
+
+[source,gradle]
+.Hello *Anynines*
+----
+redapple:martin /Volumes/DURACELL/anynines $ gradlew cf-login
+:cf-login
+Authenticating to 'https://api.de.a9s.eu' with username + 
+ of 'martin.j.quickman@googlemail.com'
+Authentication successful
+
+BUILD SUCCESSFUL
+
+Total time: 19.336 secs
+----
+
+As an example, look at this:
+
+[source,gradle]
+.What version of the gradle build tool do we have ?
+----
+redapple:martin /Volumes/DURACELL/anynines > gradlew -v
+ ------------------------------------------------------------
+ Gradle 1.11
+ ------------------------------------------------------------
+
+Build time:   2014-02-11 11:34:39 UTC
+Build number: none
+Revision:     a831fa866d46cbee94e61a09af15f9dd95987421
+
+Groovy:       1.8.6
+Ant:          Apache Ant(TM) version 1.9.2 compiled on July 8 2013
+Ivy:          2.2.0
+JVM:          1.6.0_65 (Apple Inc. 20.65-b04-462)
+OS:           Mac OS X 10.6.8 x86_64
+----
 
 
+=== Let's Build and Send Our App !
 
-=== The Automated Trail Using A Build Tool 
+TIP: Martin already has a running +hotdog+ app, so he starts his build with +cf-delete+ to remove it.
 
-Since you've chosen the quick trail, let's jump to our specific tutorial about this. link:/uploadauto[Click Here]. 
+Here's a log from a recent project upload to anynines. Martin used a single console command of +
+ +gradlew cf-delete war cf-push+ +
+and that's it ! Do the same for your app, then sit back and wait or better yet, google a little until your app is available.
 
-<<<
+WARNING: When you re-deploy (_cf-push_) an app that's already running, it's good practice to delete it first. + 
+To do that for your application, use the gradle wrapper command +gradlew cf-delete+ before doing another +gradlew cf-push+ command.
 
-== License
 
-....
-Copyright - anynines.com, 2014
+WARNING: Using the +cf-delete+ command when no app currently exists can cause a build failure and the +war+ and +cf-push+ commands will +NOT+ be done.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+.Altogether, *PUSH* now !
+----
+redapple:martin /Volumes/DURACELL/anynines $ gradlew cf-delete war cf-push
+:cf-delete
+Deleting application hotdog
+Deleted successfully
+:compileJava UP-TO-DATE
+:compileGroovy UP-TO-DATE
+:processResources UP-TO-DATE
+:classes UP-TO-DATE
+:war
+:cf-push
+Creating application hotdog
+Uploading '/Volumes/DURACELL/anynines/build/libs/anynines.war'
+Starting hotdog
+-> Downloaded app package (34M)
+Downloading JDK...
+Copying openjdk-1.7.0_25.tar.gz from the buildpack cache ...
+Unpacking JDK to .jdk
+Downloading Tomcat: apache-tomcat-7.0.41.tar.gz
+Copying apache-tomcat-7.0.41.tar.gz from the buildpack cache ...
+Unpacking Tomcat to .tomcat
+Copying mysql-connector-java-5.1.12.jar from the buildpack cache ...
+Copying postgresql-9.0-801.jdbc4.jar from the buildpack cache ...
+-----> Uploading droplet (71M)
 
-   http://www.apache.org/licenses/LICENSE-2.0
+Checking status of hotdog
+  0 of 1 instances running (1 starting)
+  0 of 1 instances running (1 starting)
+  0 of 1 instances running (1 starting)
+  0 of 1 instances running (1 starting)
+  0 of 1 instances running (1 starting)
+  1 of 1 instances running (1 running)
+Application hotdog is available at http://hotdog.de.a9sapp.eu
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-....
+BUILD SUCCESSFUL
 
+Total time: 1 mins 59.319 secs
+----
+
+TIP: Your app name will appear in place of martin's 'hotdog' name in this log. 
+
+.Upload Success 
+****
+The gradle wrapper has finished putting your project onto our Anynines server.
+
+"Application +hotdog+ is available at http://hotdog.de.a9sapp.eu[http://hotdog.de.a9sapp.eu]" confirms this app is now
+available on the internet. 
+
+Use a web browser to try your own app address in the browser address bar. You should see your app come to life !
+****
+
+''''
+
+== Wrapping It Up
+
+Ok, that's a walk-thru of the deployment of one application to the Anynines PaaS service. +
+As the .war file was already created for you, there was not as much work to get it running. +
+We'd suggest doing this sesion again until you feel comfortable with it.
 

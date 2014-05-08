@@ -1,0 +1,492 @@
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<img src="../../images/icons/warning.png" alt="Warning">
+</td>
+<td class="content">
+Prior to running the following session, the <strong>anynines.war</strong> file was copied to the <strong>Sample</strong> directory
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph right text-center">
+<p><span class="image"><img src="../../../images/warmoved2sampledir.png" alt="War file moved to a folder named Sample"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_recent_manual_upload_session">Recent Manual Upload Session</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here&#8217;s the log from a recent upload session. We used the <strong>CF</strong> tool to send our sample war file to anynines. The idea is to get your war file onto the anynines server. Here&#8217;s the log of how we did it.</p>
+</div>
+<div class="listingblock">
+<div class="title">What version of the CF tool do we have ?</div>
+<div class="content">
+<pre class="highlight"><code class="ruby language-ruby">C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents &gt; cf -v
+cf 5.4.7</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="../../images/icons/note.png" alt="Note">
+</td>
+<td class="content">
+<strong>CF</strong> version 6 may not work as expected, so use version 5 for now
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Change Into The Sample Folder</div>
+<div class="content">
+<pre>C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents&gt;cd Sample</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">What&#8217;s In This Folder ?</div>
+<div class="content">
+<pre>C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample&gt;dir
+ Volume in drive C is HP_PAVILION
+ Volume Serial Number is F4EC-EF30
+
+ Directory of C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample
+
+30/03/2014  21:54    &lt;DIR&gt;          .
+30/03/2014  21:54    &lt;DIR&gt;          ..
+30/03/2014  21:52         8,483,102 anynines.war
+               1 File(s)      8,483,102 bytes
+               2 Dir(s)  240,527,962,112 bytes free</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_login">Login</h3>
+<div class="paragraph">
+<p>The first step before we upload our war file is to gain authorization to use the Anynines service. We use the <code>cf login</code> command to do that. If Martin does not put his email address after the <code>cf login</code> command, the <strong>CF</strong> tool will prompt Martin for his email address. <strong>CF</strong> also confirms which target PaaS service martin is talking to.</p>
+</div>
+<div class="listingblock">
+<div class="title">CF Login</div>
+<div class="content">
+<pre>C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample&gt;cf login martin.j.quickman@googlemail.com
+target: https://api.de.a9s.eu</pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<img src="../../images/icons/warning.png" alt="Warning">
+</td>
+<td class="content">
+If your target PaaS provider does not match the api.de.a9s.eu, you&#8217;ll need to change it before you login.<br>
+Follow our notes at bottom of this post. Then return here to login again.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">What&#8217;s Your Password, Martin ?</div>
+<div class="content">
+<pre>Password&gt; **********</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">CF Response</div>
+<div class="content">
+<pre>Authenticating... OK</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Choose which space to deploy our war file into. Martin chose the <code>test</code> space.</div>
+<div class="content">
+<pre>1: production
+2: staging
+3: test
+Space&gt; 3</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">CF Response</div>
+<div class="content">
+<pre>Switching to space test... OK</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">What&#8217;s In This Folder ?</div>
+<div class="content">
+<pre>C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample&gt; dir
+ Volume in drive C is HP_PAVILION
+ Volume Serial Number is F4EC-EF30
+
+ Directory of C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample
+
+30/03/2014  21:54    &lt;DIR&gt;          .
+30/03/2014  21:54    &lt;DIR&gt;          ..
+30/03/2014  21:52         8,483,102 anynines.war
+               1 File(s)      8,483,102 bytes
+               2 Dir(s)  240,527,958,016 bytes free</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_let_s_send_it">Let&#8217;s Send It !</h3>
+<div class="paragraph canvas-caption">
+<p>As you can see from the above, the anynines.war file is the only file in this <strong>Sample</strong> directory folder. That&#8217;s cos the <strong>CF</strong> tool sends <strong>ALL</strong> files in the current directory to Anynines and we only want to send our <strong>war</strong> file.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="../../images/icons/tip.png" alt="Tip">
+</td>
+<td class="content">
+Note that if your current directory was in an unzipped or uncompressed ./war directory, the <strong>CF</strong> command would send the full content with sub-folders, css files, <em>everything</em> goes to Anynines !
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Altogether, <strong>PUSH</strong> now !</div>
+<div class="content">
+<pre>C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample&gt;cf push</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>What&#8217;s the name of our app going to be when running ? The name we choose here must <strong>NOT</strong> already be in use by someone else. It&#8217;s the name that&#8217;s typed when a user wants to access our app from a remote browser.</p>
+</div>
+<div class="paragraph">
+<p>Since Martin likes hotdogs, he&#8217;s going to call his app <strong>HotDog</strong> meaning that users of his deployed app will enter a browser address line of <a href="http://hotdog.de.a9sapp.eu">http://hotdog.de.a9sapp.eu</a></p>
+</div>
+<div class="listingblock">
+<div class="title">What&#8217;s The App Name Martin ?</div>
+<div class="content">
+<pre>Name&gt; HotDog</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">How Many Copies of This App Should Anynines Run ?</div>
+<div class="content">
+<pre>Instances&gt; 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If Martin&#8217;s app becomes <em>really</em> successful, he/we could bump the number of running instances.</p>
+</div>
+<div class="listingblock">
+<div class="title">How Much Memory Does This App Need ?</div>
+<div class="content">
+<pre>1: 128M
+2: 256M
+3: 512M
+4: 1G
+Memory Limit&gt; 2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Martin chose 256MB of memory for his hotdog.</p>
+</div>
+<div class="listingblock">
+<div class="title">CF Response</div>
+<div class="content">
+<pre>Creating HotDog... OK</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Sub-Domains Are Another Topic, So Take Option 1</div>
+<div class="content">
+<pre>1: HotDog
+2: none
+Subdomain&gt; HotDog</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CF</strong> responds with the Sub-Domain you&#8217;ve chosen: <code>Subdomain&gt; HotDog</code></p>
+</div>
+<div class="listingblock">
+<div class="title">Domains Are Another Topic, So Take Option 1</div>
+<div class="content">
+<pre>1: de.a9sapp.eu
+2: none
+Domain&gt; de.a9sapp.eu</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>CF</strong> responds with the Domain you&#8217;ve chosen: <code>Domain&gt; de.a9sapp.eu</code></p>
+</div>
+<div class="listingblock">
+<div class="title">CF Responses While Our App Is Sent To Anynines</div>
+<div class="content">
+<pre>Creating route HotDog.de.a9sapp.eu... OK
+Binding HotDog.de.a9sapp.eu to HotDog... OK</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Does Your App Need Any Persistence Services ?</div>
+<div class="content">
+<pre>Create services for application?&gt; n</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="../../images/icons/note.png" alt="Note">
+</td>
+<td class="content">
+As your skillset evolves, you may develop future applications that need to persist some data. Anynines offers several services.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Should <strong>CF</strong> Save Your Choices From This Session ?</div>
+<div class="content">
+<pre>Save configuration?&gt; n</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If we save our session choices, <strong>CF</strong> writes our choices into a text file named <code>manifest.yml</code> so that next time we only need key the command <code>cf push</code> and all our previous answers are used to re-deploy our app. You can use a plain-text editor (not one that puts funny stuff in the file) to change the values of the prior session.</p>
+</div>
+<div class="listingblock">
+<div class="title"><strong>CF</strong> Gives Us An Audit Trail</div>
+<div class="content">
+<pre>Uploading HotDog... OK
+Preparing to start HotDog... OK
+-----&gt; Downloaded app package (8.2M)
+Downloading JDK...
+Copying openjdk-1.7.0_25.tar.gz from the buildpack cache ...
+Unpacking JDK to .jdk
+Downloading Tomcat: apache-tomcat-7.0.41.tar.gz
+Copying apache-tomcat-7.0.41.tar.gz from the buildpack cache ...
+Unpacking Tomcat to .tomcat
+Copying mysql-connector-java-5.1.12.jar from the buildpack cache ...
+Copying postgresql-9.0-801.jdbc4.jar from the buildpack cache ...
+-&gt; Uploading droplet (46M)
+Checking status of app 'HotDog'....
+  0 of 1 instances running (1 starting)
+  0 of 1 instances running (1 starting)
+  0 of 1 instances running (1 starting)
+  0 of 1 instances running (1 starting)
+  1 of 1 instances running (1 running)
+Push successful! App 'HotDog' available at HotDog.de.a9sapp.eu</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_success">Success</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hurrah Martin ! You&#8217;ve done it ! Now just find a browser with a live internet connect and key
+<code><a href="http://hotdog.de.a9sapp.eu">http://hotdog.de.a9sapp.eu</a></code> into the address bar. Go on, ya know ya want to :-)</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_anynines_feedback">Anynines Feedback</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ok, GR8 ! How do we find the health of our apps that are running on Anynines ? From time to time, it&#8217;s nice to be able to verify <strong>what&#8217;s going on</strong> (apologies to Marvin Gaye!). The <strong>CF</strong> tool has several features to allow that. Here are a few examples, though many more are available if you explore <strong>CF</strong> a bit.</p>
+</div>
+<div class="listingblock">
+<div class="title">Display The State Of All Our Applications</div>
+<div class="content">
+<pre>C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample&gt;cf apps
+Getting applications in test... OK
+
+name     status    usage      url
+HotDog   running   1 x 256M   HotDog.de.a9sapp.eu</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Display The Health Of One Single Application By Name</div>
+<div class="content">
+<pre>C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample&gt;cf app HotDog
+HotDog: running
+  usage: 256M x 1 instance
+  urls: HotDog.de.a9sapp.eu</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Which Organizations Does Martin (or You) Have ?</div>
+<div class="content">
+<pre>C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample&gt;cf orgs
+Getting organizations... OK
+
+name
+martin_j_quickman_googlemail_com</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since we did not declare an organization for this <code>cf push</code> session, the <strong>CF</strong> tool builds a temporary org name using your email address. You can change it later.</p>
+</div>
+<div class="paragraph">
+<p>Once you become more familiar with Anynines, you&#8217;ll want to learn our structuring feature for all your apps. You can set up one or more organizations, and within each org, there can be several <em>spaces</em>. Then you can assign an application to one specific space within one organization. It just helps us keep things tidy.</p>
+</div>
+<div class="listingblock">
+<div class="title">What Spaces Are In This Organization ?</div>
+<div class="content">
+<pre>C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample&gt;cf spaces
+Getting spaces in martin_j_quickman_googlemail_com... OK
+
+name         apps     services
+production   none     none
+staging      none     none
+test         HotDog   none</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Display The Health Of One Single Application By Name</div>
+<div class="content">
+<pre>C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample&gt;cf health HotDog
+Getting health status... OK
+
+HotDog: running</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Now Get Some Metrics About One Specific App</div>
+<div class="content">
+<pre>C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample&gt;cf stats HotDog
+Getting stats for HotDog... OK
+
+instance   cpu    memory           disk
+#0         0.1%   157.8M of 256M   105.4M of 1G</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It&#8217;s often really useful to diagnose problems by looking at the trail of messages issued as our app runs. We can do that with a log command like so :</p>
+</div>
+<div class="listingblock">
+<div class="title">See The Joblog For One Specific App</div>
+<div class="content">
+<pre>C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample&gt;cf logs HotDog
+Getting logs for HotDog #0... OK
+
+Reading logs/env.log... OK
+TMPDIR=/home/vcap/tmp
+VCAP_CONSOLE_IP=0.0.0.0
+VCAP_APP_PORT=64719
+JAVA_OPTS=-Xmx256m -Xms256m -Dhttp.port=64719
+USER=vcap
+VCAP_APPLICATION={"instance_id":"ccc37aac75c7a4e309d0afd6efe546df","instance_index":0,"host":"0.0.0.0","port":64719,"started_at":"2014-03-30 20:02:14 +0000","st
+arted_at_timestamp":1396209734,"start":"2014-03-30 20:02:14 +0000","state_timestamp":1396209734,"limits":{"mem":256,"disk":1024,"fds":16384},"application_versio
+n":"936f9533-52a5-41db-96ea-8fd525d4cee0","application_name":"HotDog","application_uris":["HotDog.de.a9sapp.eu"],"version":"936f9533-52a5-41db-96ea-8fd525d4cee0
+","name":"HotDog","uris":["HotDog.de.a9sapp.eu"],"users":null}
+PATH=/home/vcap/app/.jdk/bin:/bin:/usr/bin
+PWD=/home/vcap
+JAVA_HOME=/home/vcap/app/.jdk
+LANG=en_US.UTF-8
+VCAP_SERVICES={}
+SHLVL=1
+HOME=/home/vcap/app
+PORT=64719
+VCAP_APP_HOST=0.0.0.0
+MEMORY_LIMIT=256m
+VCAP_CONSOLE_PORT=64720
+_=/usr/bin/env
+
+Reading logs/staging_task.log... OK
+-----&gt; Downloaded app package (8.2M)
+Downloading JDK...
+Copying openjdk-1.7.0_25.tar.gz from the buildpack cache ...
+Unpacking JDK to .jdk
+Downloading Tomcat: apache-tomcat-7.0.41.tar.gz
+Copying apache-tomcat-7.0.41.tar.gz from the buildpack cache ...
+Unpacking Tomcat to .tomcat
+Copying mysql-connector-java-5.1.12.jar from the buildpack cache ...
+Copying postgresql-9.0-801.jdbc4.jar from the buildpack cache ...
+
+Reading logs/stderr.log... OK
+Mar 30, 2014 8:02:19 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-bio-64719"]
+Mar 30, 2014 8:02:19 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 730 ms
+Mar 30, 2014 8:02:19 PM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service Catalina
+Mar 30, 2014 8:02:19 PM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet Engine: Apache Tomcat/7.0.41
+Mar 30, 2014 8:02:19 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /home/vcap/app/webapps/ROOT
+Mar 30, 2014 8:02:22 PM groovyx.caelyf.BindingEnhancer &lt;clinit&gt;
+WARNING: Name of logger: caelyf.cache.BindingEnhancer
+Mar 30, 2014 8:02:22 PM groovyx.caelyf.cache.RedisHolder &lt;clinit&gt;
+WARNING: Name of logger: caelyf.redisholder
+Mar 30, 2014 8:02:22 PM groovyx.caelyf.cache.Environment setup
+WARNING: Name of logger: caelyf.environment
+Mar 30, 2014 8:02:22 PM groovyx.caelyf.cache.Environment parseVCAP
+INFO: Examining VCAP_SERVICES in Environment.groovy
+Mar 30, 2014 8:02:22 PM groovyx.caelyf.cache.Environment parseVCAP
+WARNING: Environment.groovy set serviceID to none
+Mar 30, 2014 8:02:22 PM groovyx.caelyf.cache.Environment parseVCAP
+WARNING: Name of logger: caelyf.environment
+Mar 30, 2014 8:02:22 PM groovyx.caelyf.cache.Environment parseVCAP
+INFO: Selected VCAP_SERVICES none for caching
+Mar 30, 2014 8:02:23 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-bio-64719"]
+Mar 30, 2014 8:02:23 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 3881 ms
+
+Reading logs/stdout.log... OK</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_wrapping_it_up">Wrapping It Up</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ok, folks, that&#8217;s a walk-thru of the deployment of one application to the Anynines PaaS service. As the .war file was already created for you, there was not as much work to get it running. We&#8217;d suggest you try doing this sesion again until you become comfortable with it.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<img src="../../images/icons/warning.png" alt="Warning">
+</td>
+<td class="content">
+When you re-deploy an app that&#8217;s already running, it&#8217;s a good practice to delete the app before re-deployment.<br>
+For Martin&#8217;s app, he&#8217;d issue the command <code>cf delete hotdog</code> before doing another <code>cf push</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><br />&nbsp;<br /></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_change_your_target">Change Your Target</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are many  cloud foundry providers these days. Each provider has a different api address for this PaaS service. The Anynines service is located at <code><a href="https://api.de.a9s.eu">https://api.de.a9s.eu</a></code> so follow these steps to re-point your <strong>CF</strong> tool to Anynines.</p>
+</div>
+<div class="listingblock">
+<div class="title">What&#8217;s The Current Target For Our Uploads ?</div>
+<div class="content">
+<pre>CF target
+CF instance: https://api.pivotal.com (API version: 2)
+user: martin.j.quickman@googlemail.com
+target app space: test in org: martin_j_quickman_googlemail_com</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Reset It</div>
+<div class="content">
+<pre>CF target https://api.de.a9s.eu
+target set to https://api.de.a9s.eu</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now go back and logon again. <strong>CF</strong> will use the new target address to push to.</p>
+</div>
+</div>
+</div>

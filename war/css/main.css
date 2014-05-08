@@ -6,7 +6,7 @@ body {
 
 .o {	color: #EC834E;}
 .b {	color: #576A88;}
-.db {color: #515D79;}
+.db {color: #4D5A75;}
 .dg {color: #414042;}
 .lg {color: #E6E7E8;}
 
@@ -160,7 +160,7 @@ a:hover {
 #header {
     min-height: 140px;
 	min-width: 840px;
-	background: #515d79;
+	background: #4D5A75;                               
 }
 
 

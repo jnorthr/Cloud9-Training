@@ -43,3 +43,34 @@ blue 576a88
 dark blue 515d79
 dark grey 414042
 lite grey e6e7e8
+<ul>
+<li class="o">Anynines Orange Color EC834E</li>
+<li class="b">Anynines Blue Color 576A88</li>
+<li class="db">Anynines Dark Blue Color 515D79</li>
+<li class="dg">Anynines Dark Grey Color 414042</li>
+<li class="lg">Anynines Lite Grey Color E6E7E8</li>
+</ul>
+
+<hr width="66%" />
+
+// asciidoctor callout sample:
+.AsciiDoc history
+****
+AsciiDoc was first released in Nov 2002 by Stuart Rackham.
+It was designed from the start to be a shorthand syntax
+for producing professional documents like DocBook and LaTeX.
+****
+
+
+TIP: This is a tip  to see how they look !
+
+IMPORTANT: Hey man, this is *Important* !
+
+== Use The Gradle Wrapper
+
+http://java.dzone.com/articles/use-gradle-wrapper-and-stop[The Gradle Wrapper] - and what it does
+
+
+== Use Ruby In Gradle
+
+https://wiki.jenkins-ci.org/display/JENKINS/Plugins#Plugins-Rubydevelopment[Using Ruby in A Build Script] - the gradle system build tool

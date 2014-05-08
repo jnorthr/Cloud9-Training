@@ -21,7 +21,7 @@
                 <li><a href="/signup">Sign Up</a></li>
                 <li><a href="/download">Download</a></li>
                 <li><a href="/upload">Upload</a></li>
-                <li><a href="/facts">Facts</a></li>
+                <li><a href="/facts">Help</a></li>
             </ul>
         </div>
 

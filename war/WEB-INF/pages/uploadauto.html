@@ -1,31 +1,300 @@
-<div class="sect1">
-<h2 id="_your_upload_tutorial"><a class="link" href="#_your_upload_tutorial">Your Upload Tutorial</a></h2>
+<div id="preamble">
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_introduction"><a class="link" href="#_introduction">Introduction</a></h3>
-<div class="paragraph">
-<p>To make use of the princles of cloud computing, it&#8217;s vital to be able to deploy business applications to a cloud computing service. These applications typically let our customers conduct business with us. The services we provide to them can be built on a layer of technologies that are based on standards used by the industry.</p>
-</div>
-<div class="paragraph">
-<p>Such solutions as the <a href="http://cloudfoundry.org/index.html">Cloud Foundry Platform-As-A-Service (PaaS)</a>, offer a standard set of features, services and attachment points. <a href="http://www.anynines.com">Anynines</a> offers you and your clients this solutuion.</p>
-</div>
-<div class="admonitionblock note">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<img src="../../images/icons/note.png" alt="Note">
+<img src="../../images/icons/warning.png" alt="Warning">
 </td>
 <td class="content">
-We assume you&#8217;ve reviewed available technologies and found <a href="http://cloudfoundry.org/index.html">Cloud Foundry</a> to be a good choice.
+Before using this guide, the <strong><em>anynines.zip</em></strong> file must be available in your local system.
 </td>
 </tr>
 </table>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="_your_automatic_upload_tutorial">Your Automatic Upload Tutorial</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="_purpose"><a class="link" href="#_purpose">Purpose</a></h3>
+<h3 id="_introduction">Introduction</h3>
 <div class="paragraph">
-<p>This overview has step-by-step instructions on how to deploy an application to <a href="http://www.anynines.com">Anynines</a>. The programming languages and tools we&#8217;ve used in our samples are publicly available and open source products that incur no fees or charges. In these examples, no programming languages are used. You&#8217;ll need those after you become familiar with Anynines. Consult our <a href="http://www.anynines.com">Anynines Home Page</a> for more details.</p>
+<p>To get you up to speed and familiar with the anynines upload process, we&#8217;ve made this project with everything needed to make it happen. We won&#8217;t focus on the technical issues or implementation steps to do this. We&#8217;ll only cover the changes we need in our automated build script. After a few changes to the build script, we can upload a full application to anynines.com using a single command.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_you_need">What You Need</h3>
+<ul>
+<li>Have a membership account with Anynines. Follow our <a href="/signup">Sign Up</a> tutorial if you need to join us.</li>
+<li>Have the email address and password of your Anynines membership.</li>
+<li>Have a working internet connection.</li>
+<li>Have a plain text editor.</li>
+<li>Have downloaded the full zip file from our <a href="/download">download page</a>.</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_get_ready">Get Ready</h3>
+<div class="sect3">
+<h4 id="_get_zip_file">Get Zip File</h4>
+<div class="paragraph">
+<p>Download the full zip file from our <a href="download">download page</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_move_it_to_convenient_location">Move It To Convenient Location</h4>
+<div class="paragraph">
+<p>Create a new diretory folder in a convenient location on your system. Move or copy the zip file to it.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_uncompress_the_zip_file">Uncompress The Zip File</h4>
+<div class="paragraph">
+<p>The zip file holds the compressed content of our project. It is a standard format, compressed file. You should be able to uncompress / unzip it after you move it using typical tools you already have.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_review_contents">Review Contents</h4>
+<div class="paragraph">
+<p><span class="image" style="float: right"><img src="../../../images/folderStructure.png" alt="Directory folder structure after decompression"></span> After the project is decompressed into your target location, it will have a folder name of <strong>anynines</strong>. Here&#8217;s an image showing typical project content. Your version may differ as we evolve this tutorial. Don&#8217;t worry! This is normal.</p>
+</div>
+<div class="paragraph">
+<p>There are several directories of pieces we use to build our application. To learn more about how we structure our project, please review the <strong>Project Components</strong> topic or skip to the section below to learn about editing the gradle build script.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_project_components">Project Components</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The full build tool we use to upload our app is included here. It&#8217;s the <strong>gradle</strong> build tool. We&#8217;ve created a small wrapper version for you and put that into your project. You don&#8217;t even need to know this level of detail. There are no changes needed in any of the following pieces. If you&#8217;re in a hurry, skip to the section below about editing the gradle build script.</p>
+</div>
+<div class="sect2">
+<h3 id="_use_the_gradle_wrapper">Use The Gradle Wrapper</h3>
+<div class="paragraph">
+<p>Just for your information, if you&#8217;d like more info about the gradle build tool and it&#8217;s purposes, and what it does<br>
+ read this : <a href="http://java.dzone.com/articles/use-gradle-wrapper-and-stop">The Gradle Wrapper</a><br></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_build_folder">Build Folder</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_gradle_folder">Gradle Folder</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_war_folder">War Folder</h3>
+<div class="sect3">
+<h4 id="_asciidocs_folder">Asciidocs Folder</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_css_folder">CSS Folder</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_images_folder">Images Folder</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_web_inf_folder">WEB-INF Folder</h4>
+
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_gradle_build_script_editing">Gradle Build Script Editing</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_values_to_be_changed">Values To Be Changed</h3>
+<div class="paragraph">
+<p>We need to adjust these items before we try to upload an app</p>
+</div>
+<ul>
+<li>username - your email address goes here</li>
+<li>password - your password for Anynines goes here</li>
+<li>your application name in both the URI and APPLICATION declarations - pick your app's name here</li>
+<li>organization name - a way to structure your online apps</li>
+<li>FILE location (possibly) - probably won't need to fix this, but just in case</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_edit_this">Edit This</h3>
+<div class="paragraph">
+<p><span class="image thumb" style="float: right"><img src="../../../images/build1.png" alt="Gradle Build Script"></span></p>
+</div>
+<div class="paragraph">
+<p>Ok, so here is where we need to adjust several values in our build script.</p>
+</div>
+<div class="paragraph">
+<p>Take a look at the image here that shows a fragment of our <code>build.gradle</code> text file.</p>
+</div>
+<div class="paragraph">
+<p>The items we need to fix can be found within the <code>{</code> and the <code>}</code> characters after the word <em>cloudfoundry</em>, which is what our Anynines platform uses. It&#8217;s about half way down your script.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fix_username">Fix Username</h3>
+<div class="paragraph">
+<p><span class="image thumb" style="float: right"><img src="../../../images/build2.png" alt="Gradle Build Script"></span></p>
+</div>
+<div class="paragraph">
+<p>In this example, our ficticious friend Martin used his email address to deploy his <em>hotdog</em> app to Anynines.</p>
+</div>
+<div class="paragraph">
+<p>You&#8217;ll need to remove his email address within the ' single quote marks and replace it with the email address you used to join Anynines.</p>
+</div>
+<div class="paragraph">
+<p>This example was for some testing we did earlier.</p>
+</div>
+<hr>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="../../images/icons/tip.png" alt="Tip">
+</td>
+<td class="content">
+Gradle scripts allow remarks and comments when double / char.s are before the comment, i.e. //
+</td>
+</tr>
+</table>
+</div>
+<br />
+<div class="paragraph">
+<p>Your copy of our <code>build.gradle</code> text file might show <strong>//username=<em>'  '</em></strong> and the <code>//</code> bit makes this line of text invisible to the gradle tool. Gradle treats text after the <code>//</code> sequence as a remark or comment.</p>
+</div>
+<div class="paragraph">
+<p>So if you see <code>//</code> just remove it and put your email address within the ' ' marks. You should end up with something like <strong>username=<em>'<a href="mailto:men@work.com">men@work.com</a></em>'</strong>  but with your email.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fix_password">Fix Password</h3>
+<div class="paragraph">
+<p>In our example, our ficticious friend Martin used his password and you can see the <code><strong>*</strong></code> value within <code>''</code> marks.</p>
+</div>
+<div class="paragraph">
+<p>If you see <code>//</code> in your script just remove them and put your password within the <strong>''</strong> marks. You should end up with something like</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+password=<em>' monkeyshines '</em>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>but with your password there.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fix_organization">Fix Organization</h3>
+<div class="paragraph">
+<p><span class="image"><img src="../../../images/build3.png" alt="Gradle Build Script"></span></p>
+</div>
+<div class="paragraph">
+<p>After you become familiar with cloud foundry application structures, you can pick more useful names for your organization.</p>
+</div>
+<div class="paragraph">
+<p>For now, just use your email address as the organization but replace dots and @ chars with _ underscore chars.</p>
+</div>
+<div class="paragraph">
+<p>For example, <em>martin.j.quickman@googlemail.com</em> became <em>martin_j_quickman_googlemail_com</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fix_name_of_your_app">Fix Name of Your App</h3>
+<div class="paragraph">
+<p><span class="image"><img src="../../../images/build4.png" alt="Gradle Build Script"></span></p>
+</div>
+<div class="paragraph">
+<p>Want to deploy another app named <code>hotdog</code> ? No ? Well better change martin&#8217;s <code>hotdog</code> app name to your own choice. Put that in both the middle of the uri name and also as the application name.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fix_name_of_your_war_file">Fix Name of Your War File</h3>
+<div class="paragraph">
+<p><span class="image"><img src="../../../images/build5.png" alt="Gradle Build Script"></span></p>
+</div>
+<div class="paragraph">
+<p>You might not need to change this. If you&#8217;ve unzipped our archive without changing the name of the folder from <code>anynines</code> to something else, then you can leave the war file name as it is.</p>
+</div>
+<div class="paragraph">
+<p>The  <code>gradlew war</code> command makes an archive of our application. This archive is known as a web archive or war. The war file name is the same as the name of our project diretory. If you renamed our <code>anynines</code> project folder into a folder named <code>fred17</code> then the <code>gradlew war</code> command would create a new deployment file of <code>./fred17/build/libs/fred17.war</code> .</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_connect_to_anynines">Connect To Anynines</h3>
+<div class="paragraph">
+<p>Before we can upload anything, we must connect to anynines, then present our credentials in a login process. You should only need to do this once. After the first time, a small credentials token is stored in your system. This token is used in other steps to let us know who you are and what your choices are.</p>
+</div>
+<div class="paragraph">
+<p>The credentials we need to log in are stored in the <em>cloudfoundry {}</em> declaration. This way we don&#8217;t need to repeat the same stuff again and again.</p>
+</div>
+<div class="sect3">
+<h4 id="_log_in">Log In</h4>
+<div class="paragraph">
+<p>From your terminal session, you&#8217;ll need to change into the directory created when you unzipped our archive. Typically, this will be the <code>anynines</code> folder. When your session points to this folder, several gradle wrapper commands are available, one for windows systems and another for apple &amp; linux systems. The command to run the build tool is <code>gradlew</code>. We use it to <em>talk</em> to our anynines server.</p>
+</div>
+<div class="listingblock">
+<div class="title">Hello <strong>Anynines</strong></div>
+<div class="content">
+<pre class="highlight"><code class="gradle language-gradle">redapple:martin /Volumes/DURACELL/anynines $ gradlew cf-login
+:cf-login
+Authenticating to 'https://api.de.a9s.eu' with username +
+ of 'martin.j.quickman@googlemail.com'
+Authentication successful
+
+BUILD SUCCESSFUL
+
+Total time: 19.336 secs</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As an example, look at this:</p>
+</div>
+<div class="listingblock">
+<div class="title">What version of the gradle build tool do we have ?</div>
+<div class="content">
+<pre class="highlight"><code class="gradle language-gradle">redapple:martin /Volumes/DURACELL/anynines &gt; gradlew -v
+ ------------------------------------------------------------
+ Gradle 1.11
+ ------------------------------------------------------------
+
+Build time:   2014-02-11 11:34:39 UTC
+Build number: none
+Revision:     a831fa866d46cbee94e61a09af15f9dd95987421
+
+Groovy:       1.8.6
+Ant:          Apache Ant(TM) version 1.9.2 compiled on July 8 2013
+Ivy:          2.2.0
+JVM:          1.6.0_65 (Apple Inc. 20.65-b04-462)
+OS:           Mac OS X 10.6.8 x86_64</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_let_s_build_and_send_our_app">Let&#8217;s Build and Send Our App !</h3>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="../../images/icons/tip.png" alt="Tip">
+</td>
+<td class="content">
+Martin already has a running <code>hotdog</code> app, so he starts his build with <code>cf-delete</code> to remove it.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s a log from a recent project upload to anynines. Martin used a single console command of<br>
+ <code>gradlew cf-delete war cf-push</code><br>
+and that&#8217;s it ! Do the same for your app, then sit back and wait or better yet, google a little until your app is available.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -34,10 +303,64 @@ We assume you&#8217;ve reviewed available technologies and found <a href="http:/
 <img src="../../images/icons/warning.png" alt="Warning">
 </td>
 <td class="content">
-To complete the other tasks in this tutorial, you must hold a current <a href="http://www.anynines.com">Anynines</a> account.
+When you re-deploy (<em>cf-push</em>) an app that&#8217;s already running, it&#8217;s good practice to delete it first.<br>
+To do that for your application, use the gradle wrapper command <code>gradlew cf-delete</code> before doing another <code>gradlew cf-push</code> command.
 </td>
 </tr>
 </table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<img src="../../images/icons/warning.png" alt="Warning">
+</td>
+<td class="content">
+Using the <code>cf-delete</code> command when no app currently exists can cause a build failure and the <code>war</code> and <code>cf-push</code> commands will <code>NOT</code> be done.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Altogether, <strong>PUSH</strong> now !</div>
+<div class="content">
+<pre>redapple:martin /Volumes/DURACELL/anynines $ gradlew cf-delete war cf-push
+:cf-delete
+Deleting application hotdog
+Deleted successfully
+:compileJava UP-TO-DATE
+:compileGroovy UP-TO-DATE
+:processResources UP-TO-DATE
+:classes UP-TO-DATE
+:war
+:cf-push
+Creating application hotdog
+Uploading '/Volumes/DURACELL/anynines/build/libs/anynines.war'
+Starting hotdog
+-&gt; Downloaded app package (34M)
+Downloading JDK...
+Copying openjdk-1.7.0_25.tar.gz from the buildpack cache ...
+Unpacking JDK to .jdk
+Downloading Tomcat: apache-tomcat-7.0.41.tar.gz
+Copying apache-tomcat-7.0.41.tar.gz from the buildpack cache ...
+Unpacking Tomcat to .tomcat
+Copying mysql-connector-java-5.1.12.jar from the buildpack cache ...
+Copying postgresql-9.0-801.jdbc4.jar from the buildpack cache ...
+-----&gt; Uploading droplet (71M)
+
+Checking status of hotdog
+  0 of 1 instances running (1 starting)
+  0 of 1 instances running (1 starting)
+  0 of 1 instances running (1 starting)
+  0 of 1 instances running (1 starting)
+  0 of 1 instances running (1 starting)
+  1 of 1 instances running (1 running)
+Application hotdog is available at http://hotdog.de.a9sapp.eu
+
+BUILD SUCCESSFUL
+
+Total time: 1 mins 59.319 secs</pre>
+</div>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -46,106 +369,37 @@ To complete the other tasks in this tutorial, you must hold a current <a href="h
 <img src="../../images/icons/tip.png" alt="Tip">
 </td>
 <td class="content">
-This is a tip  to see how they look !
+Your app name will appear in place of martin&#8217;s <em>hotdog</em> name in this log.
 </td>
 </tr>
 </table>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<img src="../../images/icons/important.png" alt="Important">
-</td>
-<td class="content">
-Hey man, this is <strong>Important</strong> !
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<img src="../../images/icons/caution.png" alt="Caution">
-</td>
-<td class="content">
-Be ware of this - caution
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_what_you_need"><a class="link" href="#_what_you_need">What You Need</a></h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Have a membership account with Anynines. Follow our <a href="/signup">Sign Up</a> tutorial if you need to join us.</p>
-</li>
-<li>
-<p>Have the email address and password of your Anynines membership.</p>
-</li>
-<li>
-<p>Have a working internet connection.</p>
-</li>
-<li>
-<p>Have and know how to use a text editor.</p>
-</li>
-<li>
-<p>Have downloaded either ( or both of ) our sample war file or the full zip file from our download page.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_your_choice"><a class="link" href="#_your_choice">Your Choice</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>We&#8217;ve decided to break this tutorial into two pieces. You can follow either trail you choose. They both lead to the same destination : A Successfully Running App on Anynines. Use the automated trail for the quickest deployment or choose the manual trail for a deeper understanding.</p>
-</div>
-<div class="sect2">
-<h3 id="_the_manual_trail_the_cf_deployment_tool"><a class="link" href="#_the_manual_trail_the_cf_deployment_tool">The Manual Trail - the CF Deployment Tool</a></h3>
-<div class="paragraph">
-<p>Since you want more detail, let&#8217;s jump to a specific tutorial to give you that. <a href="/uploadmanual">Click Here</a>.</p>
-</div>
-<div class="paragraph">
-<p>So you&#8217;ve already installed the <strong>CF</strong> command-line tool, then you should take the sample war file ( see above ). (To install the <strong>CF</strong> tool, follow our links on our home page.) It&#8217;s a file with all the pieces you&#8217;ll need to successfully deploy an app to Anynines. It doesn&#8217;t have the extra bits to automate the build/re-build or automatic upload to our anynines servers. If you want to build this app or tinker a bit, you&#8217;ll need the zip file. Or you can take both :-)</p>
-</div>
-<div class="paragraph">
-<p>When your browser finishes the download, open the containing folder where your browser put our war file. You can try an upload to anynines from that folder, or you might want to make another folder somewhere else on your system, then copy or move the sample war file to your new folder. After that read our <a href="/upload">Upload</a> tutorial.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_the_automated_trail_using_a_build_tool"><a class="link" href="#_the_automated_trail_using_a_build_tool">The Automated Trail Using A Build Tool</a></h3>
-<div class="paragraph">
-<p>Since you&#8217;ve chosen the quick trail, let&#8217;s jump to our specific tutorial about this. <a href="/uploadauto">Click Here</a>.</p>
-</div>
-<div style="page-break-after: always;"></div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_license"><a class="link" href="#_license">License</a></h2>
-<div class="sectionbody">
-<div class="literalblock">
+<div class="sidebarblock">
 <div class="content">
-<pre>Copyright - anynines.com, 2014
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.</pre>
+<div class="title">Upload Success</div>
+<div class="paragraph">
+<p>The gradle wrapper has finished putting your project onto our Anynines server.</p>
 </div>
+<div class="paragraph">
+<p>"Application <code>hotdog</code> is available at <a href="http://hotdog.de.a9sapp.eu">http://hotdog.de.a9sapp.eu</a>" confirms this app is now
+available on the internet.</p>
+</div>
+<div class="paragraph">
+<p>Use a web browser to try your own app address in the browser address bar. You should see your app come to life !</p>
+</div>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_wrapping_it_up">Wrapping It Up</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ok, that&#8217;s a walk-thru of the deployment of one application to the Anynines PaaS service.<br>
+As the .war file was already created for you, there was not as much work to get it running.<br>
+We&#8217;d suggest doing this sesion again until you feel comfortable with it.</p>
 </div>
 </div>
 </div>

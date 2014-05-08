@@ -17,17 +17,17 @@ NOTE: We assume you've reviewed available technologies and found image:../../ima
 
 === Introduction
 
-To make use of the princles of cloud computing, it's vital to be able to deploy business applications to a cloud computing service. These applications typically let our customers conduct business with us. The services we provide to them can be built upon layers of technologies that are based on standards used by the industry. 
+To make use of the princles of cloud computing, it's vital to be able to deploy business applications to a cloud computing service. These applications typically let our customers conduct business with us. The services we provide to them can be built upon layers of technologies that use standard tools and practices of our industry. 
 
 Solutions like http://cloudfoundry.org/index.html[Cloud Foundry] Platform-As-A-Service (PaaS), offer a standard set of features, persistence and messaging services and attachment points. 
 
 
-CAUTION:    *Anynines  offers you and your clients this solution !* image:../../images/anynines.png[Anynines, 25, 25, link="http://www.anynines.com"] 
+IMPORTANT: *Anynines  offers you and your clients this solution !* image:../../images/anynines.png[Anynines, 25, 25, link="http://www.anynines.com"] 
 
 
 === Purpose
 
-This tutorial has instructions to help you deploy your application to http://www.anynines.com[Anynines]. The programming languages and tools we've used in our samples are publicly available and open source products that incur no fees or charges. In these examples, no programming languages are used. You'll need those after you become familiar with Anynines. Consult our http://www.anynines.com[Home Page] for more details.
+This upload tutorial has instructions to help you deploy your application to http://www.anynines.com[Anynines]. The programming languages and tools we've used in our samples are publicly available and open source products that incur no fees or charges. In these examples, no programming languages are used. You'll need those after you become familiar with Anynines. Consult our http://www.anynines.com[Home Page] for more details.
 
 
 WARNING: To complete this upload task, you must hold a current image:../../images/anynines.png[Anynines, 25, 25, link="http://www.anynines.com"]  http://www.anynines.com[Anynines] account.
@@ -35,12 +35,16 @@ WARNING: To complete this upload task, you must hold a current image:../../image
 
 === What You Need
 
-* Have a membership account with Anynines. Follow our link:/signup[Sign Up] tutorial if you need to join us.
-* Have the email address and password of your Anynines membership.
-* Have a working internet connection.
-* Have and know how to use a text editor.
-* Have downloaded either ( or both of ) our sample war file or the full zip file from our download page.
-* A working CF command line tool for the manual trail.
+++++
+<ul>
+<li>Have a membership account with Anynines. Follow our <a href="/signup">Sign Up</a> tutorial if you need to join us.</li>
+<li>Have the email address and password of your Anynines membership.</li>
+<li>Have a working internet connection.</li>
+<li>Have and know how to use both a text editor and operating system command line.</li>
+<li>Have downloaded either ( or both of ) our sample war file or the full zip file from our download page.</li>
+<li>A working <b>CF</b> command line tool for the manual trail.</li>
+</ul>
+++++
 
 == Your Choice
 
@@ -48,59 +52,51 @@ We've decided to break this tutorial into two trails. You can choose to follow e
 
 [big red yellow-background]*A Successfully Running App on Anynines !*
 
-.Choose either
-* the automated trail for the quickest deployment 
-* the manual trail for a deeper understanding.
+=== Choose either :
 
-.AsciiDoc history
-****
-AsciiDoc was first released in Nov 2002 by Stuart Rackham.
-It was designed from the start to be a shorthand syntax
-for producing professional documents like DocBook and LaTeX.
-****
+++++
+<ul>
+<li>the automated trail for the quickest deployment</li> 
+<li>the manual trail for more hands-on exposure</li>
+</ul>
+++++
 
 '''
 
-=== The Manual Trail - the CF Deployment Tool
+=== The Manual Trail - the *CF* Deployment Tool
 
-Do you have our sample war file ? image:../../images/download1a.png[Download War File, 314, 186 link="/download",float="right"]. Yes, you will need that. Also the ruby gem called *CF* but soon there will be a new version of this command line tool. It's written in the *GO* programming language and, unlike the Ruby gem, it will have all it's own code as a single executable program, so we will not need an installed Ruby environment. This new version is version six, or we could say *CF v6*. It has expanded functionality too. Keep an eye out for that development.
+image:../../images/download1a.png[Download War File, 418, 249 link="/download",float="right"] 
+
+Do you have our sample war file ? Yes, you will need that. And also the ruby gem called *CF*. We found a tutorial for Windows XP users http://jnorthr.wordpress.com/2014/04/01/install-cloud-foundry-cf-command-line-tool-part-two/[here] if you need to install this tool, and consult our Facts page for other variations.  
+
+Please note that soon there will be a new version of this command line tool. It's written in the *GO* programming language and, unlike the Ruby gem, it will have all it's own code as a single executable program, so we won't need an installed Ruby environment. 
+
+This new version is version six, or we could say *CF v6*. It has expanded functionality too. Keep an eye out for that development.
+
+We're working on more details here to explain the file and folder structure conventions used within this guide. As you only need our war file for this trail, we'll skip that for now.
 
 Since you wanted more detail, let's jump to our specific tutorial for that. link:/uploadmanual[Click Here]. 
 
-
-<<<
-
-=== The Automated Trail Using A Build Tool 
-
-You want it quick ? Let's dive into our qwik tutorial here: link:/uploadauto[Click Here]. 
-
-<<<
-
-== License
-
-....
-Copyright - anynines.com, 2014
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-....
-
-   http://www.apache.org/licenses/LICENSE-2.0[http://www.apache.org/licenses/LICENSE-2.0]
-
-....
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-....
-
-
-TIP: This is a tip  to see how they look !
-
-IMPORTANT: Hey man, this is *Important* !
++++<br />+++
 
 '''
 
++++<br />+++
 
+=== The Automated Trail Using A Build Tool 
+
+image:../../images/download1b.png[Download Zip File, 418, 249 link="/download",float="right"] 
+
+Do you have our complete zip file ? 
+
+TIP: Remember our zip file has all the content we used to build this tutorial website
+
+We're working on more tutorials to explain the file and folder structure conventions used within this guide. As you only want a quick peek, we'll skip that for now.
+
+So you wanted it quick ? Let's dive into our qwik tut here: link:/uploadauto[Click Here]. 
+
++++<br />+++
+
++++<br />+++
+
++++<br />+++

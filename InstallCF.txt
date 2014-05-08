@@ -1,0 +1,188 @@
+Install Cloud Foundry CF Command Line Tool
+
+// ----------------------------
+// read this nice overview from Satish Talim :
+// http://rubylearning.com/blog/how-do-i-install-a-ruby-gem-with-native-extensions-on-windows/
+
+// then go here:
+http://rubyinstaller.org/downloads/
+// Ruby Installer
+ for windows XP, i chose
+Ruby 1.9.3-p545
+ok, so download and unzip that then double click to install ruby. After install, open command terminal session
+and confirm yor have ruby running like:
+
+
+but off-the-bat, ruby does NOT include the bits needed to ruin properly on windowsXp systems, so we al need the build kit.
+See lower right BUILD YOUR OWN title and click http://github.com/oneclick/rubyinstaller/wiki/Development-Kit
+
+
+
+
+cd C:\
+mkdir devkit
+cd devkit/
+
+$ ruby dk.rb init
+$ ruby dk.rb install
+$ gem install bson_ext --platform=ruby
+
+// --------------------------------
+// to confirm GEM is installed:
+C:\Documents and Settings\HP_Owner.HP-PAVILLION>gem
+RubyGems is a sophisticated package manager for Ruby.  This is a
+basic help message containing pointers to more information.
+
+  Usage:
+    gem -h/--help
+    gem -v/--version
+    gem command [arguments...] [options...]
+
+  Examples:
+    gem install rake
+    gem list --local
+    gem build package.gemspec
+    gem help install
+
+  Further help:
+    gem help commands            list all 'gem' commands
+    gem help examples            show some examples of usage
+    gem help platforms           show information about platforms
+    gem help <COMMAND>           show help on COMMAND
+                                   (e.g. 'gem help install')
+    gem server                   present a web page at
+                                 http://localhost:8808/
+                                 with info about installed gems
+  Further information:
+    http://rubygems.rubyforge.org
+
+// --------------------------------
+$ gem install cf --platform=ruby
+HP_Owner@HP-PAVILLION /c/devkit
+$ cf -v
+cf 5.4.7
+
+HP_Owner@HP-PAVILLION /c/devkit
+$ cf target
+Target Information (where will apps be pushed):
+  CF instance: N/A (API version: N/A)
+  user: N/A
+  target app space: N/A (org: N/A)
+
+HP_Owner@HP-PAVILLION /c/devkit
+$ cf -h
+Cloud Foundry Command Line Interface, version [5.4.7]
+  Use 'cf help [command]' for command details.
+  For docs and support visit http://support.cloudfoundry.com
+
+USAGE EXAMPLES
+  $ cf target api.run.pivotal.io    <-- sets the CF instance target where your app will be pushed
+  $ cf push                         <-- deploys app to current app space on current target
+  $ cf target -s staging            <-- changes currently targeted app space to 'staging'
+
+Getting Started
+  colors        Show color configuration
+  login [EMAIL] Authenticate with the target
+  logout        Log out from the target
+  target [URL]  Set or display the target cloud, organization, and space
+  targets       List known targets.
+
+Applications
+  app [APP]     Show app information
+  apps          List your applications
+
+  Management
+    delete APPS...      Delete an application
+    push [NAME]         Push an application, syncing changes if it exists
+    rename [APP] [NAME] Rename an application
+    restart APPS...     Stop and start an application
+    start APPS...       Start an application
+    stop APPS...        Stop an application
+    console [APP]       Open a console connected to your app
+
+  Information
+    env [APP]                   Show all environment variables set for an app
+    set-env APP NAME [VALUE]    Set an environment variable
+    unset-env APP NAME          Remove an environment variable
+    events [APP]                Display application events
+    file APP [PATH]             Print out an app's file contents
+    files APP [PATH]            Examine an app's files
+    tail APP [PATH]             Stream an app's file contents
+    health APPS...              Get application health
+    instances APPS...           List an app's instances
+    logs [APP]                  Print out an app's logs
+    crashlogs APP               Print out the logs for an app's crashed instances
+    scale [APP]                 Update the instances/memory limit for an application
+    stats [APP]                 Display application instance status
+    map [APP] [HOST] DOMAIN     Add a URL mapping
+    unmap [URL] [APP]           Remove a URL mapping
+
+Services
+  service SERVICE       Show service information
+  services              List your services
+
+  Management
+    bind-service [SERVICE] [APP]        Bind a service to an application
+    create-service [OFFERING] [NAME]    Create a service
+    delete-service [SERVICE]            Delete a service
+    rename-service [SERVICE] [NAME]     Rename a service
+    unbind-service [SERVICE] [APP]      Unbind a service from an application
+    tunnel [INSTANCE] [CLIENT]          Create a local tunnel to a service.
+
+Organizations
+  create-org [NAME]                     Create an organization
+  delete-org [ORGANIZATION]             Delete an organization
+  org [ORGANIZATION]                    Show organization information
+  orgs                                  List available organizations
+  rename-org [ORGANIZATION] [NAME]      Rename an organization
+
+Spaces
+  create-space [NAME] [ORGANIZATION]    Create a space in an organization
+  delete-space SPACE                    Delete a space and its contents
+  rename-space [SPACE] [NAME]           Rename a space
+  space [SPACE]                         Show space information
+  spaces [ORGANIZATION]                 List spaces in an organization
+  switch-space NAME                     Switch to a space
+
+Routes
+  delete-route ROUTE    Delete a route
+  routes                List routes in a space
+
+Domains
+  domains [SPACE]       List domains in a space
+  map-domain NAME       Map a domain to an organization or space
+  unmap-domain DOMAIN   Unmap a domain from an organization or space
+
+Administration
+  users                                                 List all users
+  curl MODE PATH HEADERS...                             Execute a raw request
+  guid TYPE [NAME]                                      Obtain guid of an object(s)
+  set-quota [QUOTA_DEFINITION] [ORGANIZATION]           Change the quota definition for the given (or current) organization.
+  service-auth-tokens                                   List service auth tokens
+  create-service-auth-token [LABEL] [PROVIDER]          Create a service auth token
+  update-service-auth-token [SERVICE_AUTH_TOKEN]        Update a service auth token
+  delete-service-auth-token [SERVICE_AUTH_TOKEN]        Delete a service auth token
+  add-service-broker [NAME]                             Add a service broker
+  remove-service-broker NAME                            Remove a service broker
+  service-brokers                                       List registered service brokers
+  update-service-broker BROKER [NAME]                   Update a service broker
+
+  User Management
+    create-user [EMAIL] Create a user
+    passwd              Update the current user's password
+    register [EMAIL]    Create a user and log in
+
+Options:
+      --[no-]color                 Use colorful output
+      --[no-]script                Shortcut for --quiet and --force
+      --debug                      Print full stack trace (instead of crash log)
+      --http-proxy HTTP_PROXY      Connect with an http proxy server
+      --https-proxy HTTPS_PROXY    Connect with an https proxy server
+  -V, --verbose                    Print extra information
+  -f, --[no-]force                 Skip interaction when possible
+  -h, --help                       Show command usage
+  -m, --manifest FILE              Path to manifest file to use
+  -q, --[no-]quiet                 Simplify output format
+  -t, --trace                      Show API traffic
+  -v, --version                    Print version number
+

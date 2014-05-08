@@ -1,6 +1,8 @@
 <% include '/WEB-INF/includes/header.gtpl' %>
 
-<% include '/WEB-INF/pages/upload.html' %>
+<h1>Your Manual Upload Tutorial</h1>
+
+<% include '/WEB-INF/pages/uploadmanual.html' %>
 
 <% include '/WEB-INF/includes/footer.gtpl' %>
 

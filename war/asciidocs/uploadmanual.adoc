@@ -1,0 +1,386 @@
+= The Manual Upload Tutorial For Anynines
+Support Bods <support@anynines.com>
+v1.0, April., 2014: First version
+:language: html
+:imagesdir: ../../images
+:iconsdir: ../../images/icons
+:linkattrs:
+:icons: font
+:toc: right
+:keywords: cf,upload,documentation, team, anynines, help,guide,tutorial,quick,start,command,line, reference,paas,any,nines,anynines,manual,tut
+:description: Notes from a sample upload session. A series of notes, joblogs and references from our + 
+documentation team. To give you a better understanding of the manual upload process to our platform, we've included a log from a recent upload session using the CF upload coomand line tool.
+
+WARNING: Prior to running the following session, the *anynines.war* file was copied to the *Sample* directory
+
+
+[.right.text-center]
+image:../../images/warmoved2sampledir.png[War file moved to a folder named Sample]
+
+
+== Recent Manual Upload Session
+
+Here's the log from a recent upload session. We used the *CF* tool to send our sample war file to anynines. The idea is to get your war file onto the anynines server. Here's the log of how we did it.
+
+[source,ruby]
+.What version of the CF tool do we have ?
+----
+C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents > cf -v
+cf 5.4.7
+----
+
+NOTE: *CF* version 6 may not work as expected, so use version 5 for now
+
+.Change Into The Sample Folder
+----
+C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents>cd Sample
+----
+
+.What's In This Folder ?
+----
+C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample>dir
+ Volume in drive C is HP_PAVILION
+ Volume Serial Number is F4EC-EF30
+
+ Directory of C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample
+
+30/03/2014  21:54    <DIR>          .
+30/03/2014  21:54    <DIR>          ..
+30/03/2014  21:52         8,483,102 anynines.war
+               1 File(s)      8,483,102 bytes
+               2 Dir(s)  240,527,962,112 bytes free
+----
+
+=== Login
+
+The first step before we upload our war file is to gain authorization to use the Anynines service. We use the +cf login+ command to do that. If Martin does not put his email address after the +cf login+ command, the *CF* tool will prompt Martin for his email address. *CF* also confirms which target PaaS service martin is talking to.
+
+.CF Login
+----
+C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample>cf login martin.j.quickman@googlemail.com
+target: https://api.de.a9s.eu
+----
+
+WARNING: If your target PaaS provider does not match the api.de.a9s.eu, you'll need to change it before you login. + 
+Follow our notes at bottom of this post. Then return here to login again.
+
+
+.What's Your Password, Martin ?
+----
+Password> **********
+----
+
+.CF Response
+----
+Authenticating... OK
+----
+
+.Choose which space to deploy our war file into. Martin chose the +test+ space. 
+----
+1: production
+2: staging
+3: test
+Space> 3
+----
+
+.CF Response
+----
+Switching to space test... OK
+----
+
+.What's In This Folder ?
+----
+C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample> dir
+ Volume in drive C is HP_PAVILION
+ Volume Serial Number is F4EC-EF30
+
+ Directory of C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample
+
+30/03/2014  21:54    <DIR>          .
+30/03/2014  21:54    <DIR>          ..
+30/03/2014  21:52         8,483,102 anynines.war
+               1 File(s)      8,483,102 bytes
+               2 Dir(s)  240,527,958,016 bytes free
+----
+
+
+=== Let's Send It !
+
+[role="canvas-caption", position="center-up"] 
+As you can see from the above, the anynines.war file is the only file in this *Sample* directory folder. That's cos the *CF* tool sends *ALL* files in the current directory to Anynines and we only want to send our *war* file.
+
+TIP: Note that if your current directory was in an unzipped or uncompressed ./war directory, the *CF* command would send the full content with sub-folders, css files, _everything_ goes to Anynines !
+ 
+.Altogether, *PUSH* now !
+----
+C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample>cf push
+----
+
+What's the name of our app going to be when running ? The name we choose here must *NOT* already be in use by someone else. It's the name that's typed when a user wants to access our app from a remote browser. 
+
+Since Martin likes hotdogs, he's going to call his app *HotDog* meaning that users of his deployed app will enter a browser address line of http://hotdog.de.a9sapp.eu[http://hotdog.de.a9sapp.eu]
+
+.What's The App Name Martin ?
+----
+Name> HotDog
+----
+
+.How Many Copies of This App Should Anynines Run ? 
+----
+Instances> 1
+----
+
+If Martin's app becomes _really_ successful, he/we could bump the number of running instances.
+
+.How Much Memory Does This App Need ?
+----
+1: 128M
+2: 256M
+3: 512M
+4: 1G
+Memory Limit> 2
+----
+
+Martin chose 256MB of memory for his hotdog.
+
+
+.CF Response
+----
+Creating HotDog... OK
+----
+
+.Sub-Domains Are Another Topic, So Take Option 1
+----
+1: HotDog
+2: none
+Subdomain> HotDog
+----
+
+*CF* responds with the Sub-Domain you've chosen: +Subdomain> HotDog+
+
+
+.Domains Are Another Topic, So Take Option 1
+----
+1: de.a9sapp.eu
+2: none
+Domain> de.a9sapp.eu
+----
+
+*CF* responds with the Domain you've chosen: +Domain> de.a9sapp.eu+
+
+.CF Responses While Our App Is Sent To Anynines
+----
+Creating route HotDog.de.a9sapp.eu... OK
+Binding HotDog.de.a9sapp.eu to HotDog... OK
+----
+
+.Does Your App Need Any Persistence Services ?
+----
+Create services for application?> n
+----
+
+NOTE: As your skillset evolves, you may develop future applications that need to persist some data. Anynines offers several services.
+
+.Should *CF* Save Your Choices From This Session ?
+----
+Save configuration?> n
+----
+
+If we save our session choices, *CF* writes our choices into a text file named +manifest.yml+ so that next time we only need key the command +cf push+ and all our previous answers are used to re-deploy our app. You can use a plain-text editor (not one that puts funny stuff in the file) to change the values of the prior session.
+
+
+.*CF* Gives Us An Audit Trail
+----
+Uploading HotDog... OK
+Preparing to start HotDog... OK
+-----> Downloaded app package (8.2M)
+Downloading JDK...
+Copying openjdk-1.7.0_25.tar.gz from the buildpack cache ...
+Unpacking JDK to .jdk
+Downloading Tomcat: apache-tomcat-7.0.41.tar.gz
+Copying apache-tomcat-7.0.41.tar.gz from the buildpack cache ...
+Unpacking Tomcat to .tomcat
+Copying mysql-connector-java-5.1.12.jar from the buildpack cache ...
+Copying postgresql-9.0-801.jdbc4.jar from the buildpack cache ...
+-> Uploading droplet (46M)
+Checking status of app 'HotDog'....
+  0 of 1 instances running (1 starting)
+  0 of 1 instances running (1 starting)
+  0 of 1 instances running (1 starting)
+  0 of 1 instances running (1 starting)
+  1 of 1 instances running (1 running)
+Push successful! App 'HotDog' available at HotDog.de.a9sapp.eu
+----
+
+== Success
+
+Hurrah Martin ! You've done it ! Now just find a browser with a live internet connect and key 
++http://hotdog.de.a9sapp.eu[http://hotdog.de.a9sapp.eu]+ into the address bar. Go on, ya know ya want to :-)
+
+== Anynines Feedback
+
+Ok, GR8 ! How do we find the health of our apps that are running on Anynines ? From time to time, it's nice to be able to verify *what's going on* (apologies to Marvin Gaye!). The *CF* tool has several features to allow that. Here are a few examples, though many more are available if you explore *CF* a bit.
+
+.Display The State Of All Our Applications
+----
+C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample>cf apps
+Getting applications in test... OK
+
+name     status    usage      url
+HotDog   running   1 x 256M   HotDog.de.a9sapp.eu
+----
+
+.Display The Health Of One Single Application By Name
+----
+C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample>cf app HotDog
+HotDog: running
+  usage: 256M x 1 instance
+  urls: HotDog.de.a9sapp.eu
+----
+
+.Which Organizations Does Martin (or You) Have ?
+----
+C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample>cf orgs
+Getting organizations... OK
+
+name
+martin_j_quickman_googlemail_com
+----
+
+Since we did not declare an organization for this +cf push+ session, the *CF* tool builds a temporary org name using your email address. You can change it later.
+
+Once you become more familiar with Anynines, you'll want to learn our structuring feature for all your apps. You can set up one or more organizations, and within each org, there can be several 'spaces'. Then you can assign an application to one specific space within one organization. It just helps us keep things tidy.
+
+.What Spaces Are In This Organization ?
+----
+C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample>cf spaces
+Getting spaces in martin_j_quickman_googlemail_com... OK
+
+name         apps     services
+production   none     none
+staging      none     none
+test         HotDog   none
+----
+
+.Display The Health Of One Single Application By Name
+----
+C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample>cf health HotDog
+Getting health status... OK
+
+HotDog: running
+----
+
+.Now Get Some Metrics About One Specific App
+----
+C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample>cf stats HotDog
+Getting stats for HotDog... OK
+
+instance   cpu    memory           disk
+#0         0.1%   157.8M of 256M   105.4M of 1G
+----
+
+It's often really useful to diagnose problems by looking at the trail of messages issued as our app runs. We can do that with a log command like so :
+
+.See The Joblog For One Specific App
+----
+C:\Documents and Settings\HP_Owner.HP-PAVILLION\My Documents\Sample>cf logs HotDog
+Getting logs for HotDog #0... OK
+
+Reading logs/env.log... OK
+TMPDIR=/home/vcap/tmp
+VCAP_CONSOLE_IP=0.0.0.0
+VCAP_APP_PORT=64719
+JAVA_OPTS=-Xmx256m -Xms256m -Dhttp.port=64719
+USER=vcap
+VCAP_APPLICATION={"instance_id":"ccc37aac75c7a4e309d0afd6efe546df","instance_index":0,"host":"0.0.0.0","port":64719,"started_at":"2014-03-30 20:02:14 +0000","st
+arted_at_timestamp":1396209734,"start":"2014-03-30 20:02:14 +0000","state_timestamp":1396209734,"limits":{"mem":256,"disk":1024,"fds":16384},"application_versio
+n":"936f9533-52a5-41db-96ea-8fd525d4cee0","application_name":"HotDog","application_uris":["HotDog.de.a9sapp.eu"],"version":"936f9533-52a5-41db-96ea-8fd525d4cee0
+","name":"HotDog","uris":["HotDog.de.a9sapp.eu"],"users":null}
+PATH=/home/vcap/app/.jdk/bin:/bin:/usr/bin
+PWD=/home/vcap
+JAVA_HOME=/home/vcap/app/.jdk
+LANG=en_US.UTF-8
+VCAP_SERVICES={}
+SHLVL=1
+HOME=/home/vcap/app
+PORT=64719
+VCAP_APP_HOST=0.0.0.0
+MEMORY_LIMIT=256m
+VCAP_CONSOLE_PORT=64720
+_=/usr/bin/env
+
+Reading logs/staging_task.log... OK
+-----> Downloaded app package (8.2M)
+Downloading JDK...
+Copying openjdk-1.7.0_25.tar.gz from the buildpack cache ...
+Unpacking JDK to .jdk
+Downloading Tomcat: apache-tomcat-7.0.41.tar.gz
+Copying apache-tomcat-7.0.41.tar.gz from the buildpack cache ...
+Unpacking Tomcat to .tomcat
+Copying mysql-connector-java-5.1.12.jar from the buildpack cache ...
+Copying postgresql-9.0-801.jdbc4.jar from the buildpack cache ...
+
+Reading logs/stderr.log... OK
+Mar 30, 2014 8:02:19 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-bio-64719"]
+Mar 30, 2014 8:02:19 PM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 730 ms
+Mar 30, 2014 8:02:19 PM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service Catalina
+Mar 30, 2014 8:02:19 PM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet Engine: Apache Tomcat/7.0.41
+Mar 30, 2014 8:02:19 PM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /home/vcap/app/webapps/ROOT
+Mar 30, 2014 8:02:22 PM groovyx.caelyf.BindingEnhancer <clinit>
+WARNING: Name of logger: caelyf.cache.BindingEnhancer
+Mar 30, 2014 8:02:22 PM groovyx.caelyf.cache.RedisHolder <clinit>
+WARNING: Name of logger: caelyf.redisholder
+Mar 30, 2014 8:02:22 PM groovyx.caelyf.cache.Environment setup
+WARNING: Name of logger: caelyf.environment
+Mar 30, 2014 8:02:22 PM groovyx.caelyf.cache.Environment parseVCAP
+INFO: Examining VCAP_SERVICES in Environment.groovy
+Mar 30, 2014 8:02:22 PM groovyx.caelyf.cache.Environment parseVCAP
+WARNING: Environment.groovy set serviceID to none
+Mar 30, 2014 8:02:22 PM groovyx.caelyf.cache.Environment parseVCAP
+WARNING: Name of logger: caelyf.environment
+Mar 30, 2014 8:02:22 PM groovyx.caelyf.cache.Environment parseVCAP
+INFO: Selected VCAP_SERVICES none for caching
+Mar 30, 2014 8:02:23 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-bio-64719"]
+Mar 30, 2014 8:02:23 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 3881 ms
+
+Reading logs/stdout.log... OK
+----
+
+== Wrapping It Up
+
+Ok, folks, that's a walk-thru of the deployment of one application to the Anynines PaaS service. As the .war file was already created for you, there was not as much work to get it running. We'd suggest you try doing this sesion again until you become comfortable with it.
+
+WARNING: When you re-deploy an app that's already running, it's a good practice to delete the app before re-deployment. + 
+For Martin's app, he'd issue the command +cf delete hotdog+ before doing another +cf push+
+
++++<br />&nbsp;<br />+++
+
+
+''''
+
+== Change Your Target
+
+There are many  cloud foundry providers these days. Each provider has a different api address for this PaaS service. The Anynines service is located at +https://api.de.a9s.eu+ so follow these steps to re-point your *CF* tool to Anynines.
+
+.What's The Current Target For Our Uploads ?
+----
+CF target
+CF instance: https://api.pivotal.com (API version: 2)
+user: martin.j.quickman@googlemail.com
+target app space: test in org: martin_j_quickman_googlemail_com
+----
+
+.Reset It
+----
+CF target https://api.de.a9s.eu
+target set to https://api.de.a9s.eu
+----
+
+Now go back and logon again. *CF* will use the new target address to push to.
