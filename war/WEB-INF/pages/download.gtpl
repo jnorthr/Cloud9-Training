@@ -27,22 +27,22 @@
 </ul>
 
 <h2>It's Your Choice</h2>
-<p>If you're a hot hacker and like to work at the command line, go manual and follow the next steps. If you're impatient (or lazy), take the high road and choose gradle.</p>
+<p>If you're a hot hacker and like to work at the command line, go manual and follow the next steps. If you're impatient (or lazy), take the high road and choose the gradle auto-pilot.</p>
 
 
 <h3>CF Deployment Tool</h3>
 <div style="float: right; margin: 0px 0px 0px 20px;"><img class="shadow" src="/images/download1a.png"  width="627" border="1" alt="download sample war file"></div>
 <p>If you've already installed the <b>CF</b> command-line tool, then you should take the sample war file ( see right ). 
-(To install the <b>CF</b> tool, follow our links on our home page.) 
-It's a file with all the pieces you'll need to successfully deploy an app to Anynines. 
-It doesn't have the extra bits to automate the build/re-build or automatic upload to our anynines servers. 
-If you want to build this app or tinker a bit, you'll need the zip file. Or you can take both <span class="orange">:-)</span></p>
+(To install the <b>CF</b> tool, follow our links on our <a href="/">home page</a> or <a href="https://anynines.zendesk.com/entries/60241846-How-to-install-the-CLI-v6">read this</a>.) 
+<p>It's a file with all the pieces you'll need to successfully deploy an app to Anynines. 
+It doesn't have the extra bits to automate the build/re-build or automatic upload to our anynines servers.</p> 
+<p>If you want to build this app or tinker a bit, you'll need the zip file. Or you can take both <span class="orange">:-)</span></p>
 
 <br style="clear: both;" />&nbsp;<br />
 
 <div style="float: left; margin: 0px 20px 0px 0px;"><img class="shadow" src="/images/grabwar.png"  width="418" border="1" alt="download sample war file"></div>
 
-<p>When your browser finishes the download, open the containing folder where your browser put our war file. You can try an upload to anynines from that folder, or you might want to make another folder somewhere else on your system, then copy or move the sample war file to your new folder. After that read our <a href="/upload">Upload</a> tutorial.</p>
+<p>When your browser finishes the download, open the containing folder where your browser put our war file. You can try an upload to anynines from that folder, or you might want to make another folder somewhere else on your system, then copy or move the sample war file to your new folder. </p><p>After that read our <a href="/upload">Upload</a> tutorial.</p>
 
 <br  style="clear: both;" />&nbsp;<br />
 <div style="width:50%; margin-left:auto; margin-right:auto;"><img class="shadow" src="/images/warindownloads.png"  border="1"></div>
@@ -56,12 +56,12 @@ If you want to build this app or tinker a bit, you'll need the zip file. Or you 
 <h3>Gradle Automated Build and Deployment Tool</h3>
 <div style="float: right; margin: 5px 0px 0px 20px;"><img class="shadow" src="/images/download1b.png"  width="627" border="1" alt="download sample war file"></div>
 
-<p>To try this approach, you'll need the zip file. Look at the top right of this page for our Anynines zip entry. Click on that to start the download into your sytem. 
-Our zip file has everything we put in the web archive ( .war ) file plus some extra bits you'll need to deploy this application.</p>
+<p>To try this approach, you'll need the zip file. Look at the top right of this page for our Anynines zip entry. Click on that to start the download into your sytem.</p> 
+<p>Our zip file has everything we put in the web archive ( .war ) file plus some extra bits you'll need to deploy this application.</p>
 
 <p>You might want to make another folder somewhere else on your system, then copy or move our zip file to your new folder. 
-You'll need to unzip the file when you have it where you want it. 
-Our project file structure follows the typical folder structure used in build tools like maven and gradle. Look at our upload page for a typical layout.</p>
+You'll need to unzip the file when you have it where you want it.</p> 
+<p>Our project file structure follows the typical folder structure used in build tools like maven and gradle. Look at our upload page for a typical layout.</p>
 
 <p>After that, read our <a href="/upload">Upload</a> tutorial.</p>
 

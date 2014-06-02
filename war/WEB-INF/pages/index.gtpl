@@ -11,6 +11,9 @@
 <p>You can install and manually use a deployment tool. We suggest a tool named <b>CF</b> - for 'Cloud Foundry'. It has a lot of flexibility to help you manage your applications on Anynines. It's for serious use and can be a bit of effort to get it running. Often, you may not even know if our Anynines services are what you need. Sure <b>CF</b> is great when you are really into building apps, but there is a short-cut.</p>
 <p>By-the-way, if you really want to dig into the <b>CF</b> life-style, <a href="http://www.slideshare.net/anynines/getting-started-with-anynines">look here for an overview</a> and/or these <a href="https://support.anynines.com/entries/24083808-How-to-deploy-your-apps-on-anynines">detailed instructions</a> to find and install the <b>CF</b> toolkit.</p>
 
+<p>Oliver, our tek-head, has also written some brilliant posts to get you started. You can read his post on how to install CF <a href="https://anynines.zendesk.com/entries/60241846-How-to-install-the-CLI-v6">here</a> and <a href="https://support.anynines.com/entries/60238466-Getting-started-with-anynines-using-the-CLI-v6">here</a> Oliver gives you a heads-up to get you up to speed.</p>
+
+
 
 <h2>Use A Build Tool</h2>
 
