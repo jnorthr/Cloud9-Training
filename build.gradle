@@ -46,8 +46,8 @@ dependencies {
 
 // war file does not need this closure as the CF command ignores build.gradle
 cloudfoundry {
-  //username=''  	// if not declared, defaults to ~/.gradle/gradle.properties like cf.username=men@work.com
-  //password=''  	// don't put quote marks around the value after the =            cf.password=*******
+  username='james.northrop@orange.fr'  	// if not declared, defaults to ~/.gradle/gradle.properties like cf.username=men@work.com
+  password='tunaF1sh'  	// don't put quote marks around the value after the =            cf.password=*******
   target='https://api.de.a9s.eu' 		// cloud foundry api target address for http://www.anynines.com/
   organization = 'james_northrop_orange_fr'
   space = 'development'
