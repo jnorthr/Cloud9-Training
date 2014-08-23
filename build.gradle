@@ -1,5 +1,4 @@
 // cloud9 build.gradle
-import org.apache.ivy.plugins.resolver.URLResolver
 
 apply plugin: 'groovy'
 apply plugin: 'war'
@@ -24,7 +23,7 @@ buildscript {
     mavenCentral()
   }
   dependencies {
-    classpath group: 'org.cloudfoundry', name: 'cf-gradle-plugin', version: '1.0.0'
+    classpath group: 'org.cloudfoundry', name: 'cf-gradle-plugin', version: '1.0.2'
   }
 }
 
@@ -81,5 +80,5 @@ task zipAll(type: Zip) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion '1.11'
+    gradleVersion '2.0'
 }
