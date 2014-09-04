@@ -1,10 +1,12 @@
-<div id="preamble">
+<div class="sect1">
+<h2 id="_your_automatic_upload_tutorial">Your Automatic Upload Tutorial</h2>
 <div class="sectionbody">
+<link rel="stylesheet"  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css">
 <div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="icon-warning" title="Warning"></i>
+<img src="../../images/icons/warning.png" alt="Warning">
 </td>
 <td class="content">
 Before using this guide, the <strong><em>anynines.zip</em></strong> file must be available in your local system.
@@ -12,11 +14,6 @@ Before using this guide, the <strong><em>anynines.zip</em></strong> file must be
 </tr>
 </table>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_your_automatic_upload_tutorial">Your Automatic Upload Tutorial</h2>
-<div class="sectionbody">
 <div class="sect2">
 <h3 id="_introduction">Introduction</h3>
 <div class="paragraph">
@@ -65,33 +62,11 @@ Before using this guide, the <strong><em>anynines.zip</em></strong> file must be
 </div>
 </div>
 </div>
-<br />&nbsp;<br />
 <div class="sect1">
 <h2 id="_project_components">Project Components</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The full build tool we use to upload our app is included here. It&#8217;s the <strong>gradle</strong> build tool. We&#8217;ve created a small wrapper version for you and put that into your project. You don&#8217;t even need to know this level of detail. There are no changes needed in any of the following pieces. If you&#8217;re in a hurry, skip to the section below about editing the gradle build script.</p>
-
-<p>The full gradle tool is provided in the outer-most folder named &apos;gradle&apos;. We&apos;ve included a script to run it called <strong>gradlew</strong>. From a terminal console, change your directory to the outer folder with folders like war,gradle and then, to see if everything is ok, run a command like:
-<pre class="highlight"><code class="gradle language-gradle">redapple:martin /Volumes/DURACELL/anynines$ gradlew check
-:compileJava UP-TO-DATE
-:compileGroovy UP-TO-DATE
-:processResources UP-TO-DATE
-:classes UP-TO-DATE
-:compileTestJava UP-TO-DATE
-:compileTestGroovy UP-TO-DATE
-:processTestResources UP-TO-DATE
-:testClasses UP-TO-DATE
-:test UP-TO-DATE
-:check UP-TO-DATE
-
-BUILD SUCCESSFUL
-
-Total time: 9.859 secs
-redapple:martin /Volumes/DURACELL/anynines$
-</code></pre>
-<br />This check will verify that all components are ready to use.
-</p>
 </div>
 <div class="sect2">
 <h3 id="_use_the_gradle_wrapper">Use The Gradle Wrapper</h3>
@@ -108,14 +83,14 @@ redapple:martin /Volumes/DURACELL/anynines$
 <div class="sect2">
 <h3 id="_values_to_be_changed">Values To Be Changed</h3>
 <div class="paragraph">
-<p>We need to declare some values before we try to upload an app :</p>
+<p>We need to adjust these items before we try to upload an app</p>
 </div>
 <ul>
-<li><strong>username</strong> - your email address goes here</li>
-<li><strong>password</strong> - your password for Anynines goes here</li>
-<li>your application name in both the <strong>URI</strong> and <strong>APPLICATION</strong> declarations - pick your app's name here</li>
-<li><strong>organization</strong> name - a way to structure your online apps</li>
-<li><strong>FILE</strong> location (possibly) - probably won't need to fix this, but just in case</li>
+<li>username - your email address goes here</li>
+<li>password - your password for Anynines goes here</li>
+<li>your application name in both the URI and APPLICATION declarations - pick your app's name here</li>
+<li>organization name - a way to structure your online apps</li>
+<li>FILE location (possibly) - probably won't need to fix this, but just in case</li>
 </ul>
 </div>
 <div class="sect2">
@@ -139,22 +114,23 @@ redapple:martin /Volumes/DURACELL/anynines$
 <p><span class="image thumb" style="float: right"><img src="../../../images/build2.png" alt="Gradle Build Script"></span></p>
 </div>
 <div class="paragraph">
-<p>In this example, our ficticious friend Martin used his email address to deploy his <em>hotdog</em>  app to Anynines.</p>
+<p>In this example, our ficticious friend Martin used his email address to deploy his <em>hotdog</em> app to Anynines.</p>
 </div>
 <div class="paragraph">
-<p>You&#8217;ll need to remove his email address within the <strong>&apos;</strong> single quote marks and replace it with the email address you used to join Anynines.</p>
+<p>You&#8217;ll need to remove his email address within the ' single quote marks and replace it with the email address you used to join Anynines.</p>
 </div>
 <div class="paragraph">
 <p>This example was for some testing we did earlier.</p>
 </div>
-<br /><hr><br />
+<hr>
 <div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="icon-tip" title="Tip"></i>
+<img src="../../images/icons/tip.png" alt="Tip">
 </td>
-<td class="content">Gradle scripts allow remarks and comments when double <strong>/</strong> char.s are before the comment, i.e. like  <strong>//</strong>
+<td class="content">
+Gradle scripts allow remarks and comments when double / char.s are before the comment, i.e. //
 </td>
 </tr>
 </table>
@@ -226,12 +202,12 @@ password=<em>' monkeyshines '</em>
 <p>Before we can upload anything, we must connect to anynines, then present our credentials in a login process. You should only need to do this once. After the first time, a small credentials token is stored in your system. This token is used in other steps to let us know who you are and what your choices are.</p>
 </div>
 <div class="paragraph">
-<p>The credentials we need to log in are stored in the <strong>cloudfoundry {}</strong> declaration. This way we don&#8217;t need to repeat the same stuff again and again.</p>
+<p>The credentials we need to log in are stored in the <em>cloudfoundry {}</em> declaration. This way we don&#8217;t need to repeat the same stuff again and again.</p>
 </div>
 <div class="sect3">
 <h4 id="_log_in">Log In</h4>
 <div class="paragraph">
-<p>From your terminal session, you&#8217;ll need to change into the directory created when you unzipped our archive. Typically, this will be the <code>anynines</code> folder. When your session points to this folder, several gradle wrapper commands are available, one for windows systems and another for apple &amp; linux systems. The command to run the build tool is <code>gradlew</code>. We use it to <em>talk</em> to our anynines server. Note that ubuntu users may need to prefix their command like this: <code>bash gradlew</code>.</p>
+<p>From your terminal session, you&#8217;ll need to change into the directory created when you unzipped our archive. Typically, this will be the <code>anynines</code> folder. When your session points to this folder, several gradle wrapper commands are available, one for windows systems and another for apple &amp; linux systems. The command to run the build tool is <code>gradlew</code>. We use it to <em>talk</em> to our anynines server.</p>
 </div>
 <div class="listingblock">
 <div class="title">Hello <strong>Anynines</strong></div>
@@ -277,7 +253,7 @@ OS:           Mac OS X 10.6.8 x86_64</code></pre>
 <table>
 <tr>
 <td class="icon">
-<i class="icon-tip" title="Tip"></i>
+<img src="../../images/icons/tip.png" alt="Tip">
 </td>
 <td class="content">
 Martin already has a running <code>hotdog</code> app, so he starts his build with <code>cf-delete</code> to remove it.
@@ -286,11 +262,10 @@ Martin already has a running <code>hotdog</code> app, so he starts his build wit
 </table>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s a log from a recent project upload to anynines. Martin used a single console command of<br/>&nbsp;<br />
- <code>gradlew cf-delete war cf-push</code><br />&nbsp;<br />
+<p>Here&#8217;s a log from a recent project upload to anynines. Martin used a single console command of<br>
+ <code>gradlew cf-delete war cf-push</code><br>
 and that&#8217;s it ! Do the same for your app, then sit back and wait or better yet, google a little until your app is available.</p>
 </div>
-
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -304,13 +279,11 @@ To do that for your application, use the gradle wrapper command <code>gradlew cf
 </tr>
 </table>
 </div>
-<br />
-
-<div class="admonitionblock tip">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<img src="../../images/icons/tip.png" alt="Tip">
+<img src="../../images/icons/warning.png" alt="Warning">
 </td>
 <td class="content">
 Using the <code>cf-delete</code> command when no app currently exists can cause a build failure and the <code>war</code> and <code>cf-push</code> commands will <code>NOT</code> be done.
@@ -318,16 +291,6 @@ Using the <code>cf-delete</code> command when no app currently exists can cause 
 </tr>
 </table>
 </div>
-<br />
-
-
-
-
-
-
-
-
-
 <div class="listingblock">
 <div class="title">Altogether, <strong>PUSH</strong> now !</div>
 <div class="content">
@@ -381,7 +344,6 @@ Your app name will appear in place of martin&#8217;s <em>hotdog</em> name in thi
 </tr>
 </table>
 </div>
-
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Upload Success</div>

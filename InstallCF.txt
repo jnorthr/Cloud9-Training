@@ -12,12 +12,8 @@ Ruby 1.9.3-p545
 ok, so download and unzip that then double click to install ruby. After install, open command terminal session
 and confirm yor have ruby running like:
 
-
-but off-the-bat, ruby does NOT include the bits needed to ruin properly on windowsXp systems, so we al need the build kit.
+but off-the-bat, ruby does NOT include the bits needed to run properly on windowsXp systems, so we all need the build kit.
 See lower right BUILD YOUR OWN title and click http://github.com/oneclick/rubyinstaller/wiki/Development-Kit
-
-
-
 
 cd C:\
 mkdir devkit

@@ -6,7 +6,6 @@ v1.0, April., 2014: First version
 :iconsdir: ../../images/icons
 :linkattrs:
 :icons: font
-:toc: right
 :keywords: documentation, team, anynines, help
 :description: A series of notes and references from our + 
 documentation team. To give you a better understanding of our platform, we've gathered together some links, documents, talks and references that explain things a bit better.

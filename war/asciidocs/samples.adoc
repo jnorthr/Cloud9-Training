@@ -1,0 +1,76 @@
+= Notes About Anynines Sample Applications
+Support Bods <support@anynines.com>
+v1.0, 2014-06-01 updated 7 Aug. 2014
+:language: html
+:imagesdir: ../../images
+:iconsdir: ../../images/icons
+:linkattrs:
+:icons: font
+:keywords: documentation, team, anynines, help
+:description: A series of sample applications and references from our + 
+documentation team. To give you a better understanding of our platform, we've gathered together some sample application written in a variety of development languges. Hopefully, this will give you a clear idea of what it takes to deploy an app on Anynines.
+:linkcss:
+
+++++
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css">
+++++
+
+// to suppress html header and footer lines, add the --noheader-footer option
+// /Volumes/DURACELL/Cloud9-Training/war/asciidocs $ asciidoctor samples.adoc --no-header-footer
+
+== Overview
+
+Anynines offers a number of sample applications to get you started. These samples are written in a variety of programming languages. Here they are.
+
+== Sample Applications
+
+You can find most of our sample applications on our github anynines account at https://github.com/anynines/[https://github.com/anynines/^]. 
+
+'''
+
+WARNING: You will need to signup with Anynines before running any of these samples.
+
+'''
+
+=== Node.js
+
+* https://github.com/anynines/simple_node_app[Simple Node App^] NodeJS , no services; A simple nodejs app to test a deployment environment.
+* https://github.com/anynines/nodejs_mongodb_example[Nodejs Mongodb Example^] NodeJS , mongodb; A simple quotation database application using node.js, MongoDB and express.js.
+
+=== Ruby
+
+  *    https://github.com/anynines/paperclip_demo[Paperclip Demo^] - Rails,PostgreSQL service, Swift service; Application allows users to manage a list of friends. 
+  *    https://github.com/anynines/rails4_carrierwave_example[Rails4 Carrierwave Example^] - Rails,PostgreSQL, Swift service; Rails 3.2.18 & Carrierwave & a9s Swift Service & PostgreSQL. A small application that demonstrates the work of these programs together.
+  *    https://github.com/anynines/a9s_swift[A9S Swift^] - a support module for paperclip and carrierwave.
+  *    https://github.com/anynines/ruby-sinatra-example-app[Ruby Sinatra Example App^] - Sinatra, no services.
+  *    https://github.com/anynines/simple_rails_app[Simple Rails App^] - Rails, Ruby 1.9.3, 2.0.0, JRuby, MySQL services; It can create, delete and display posts. It is just a proof of concept. 
+  *    https://github.com/anynines/rails4ruby2example[Ruby Rails Example 2^] - another one.
+
+=== PHP
+
+  *    not available
+
+=== Python
+
+  *    not available yet - coming soon
+
+=== Go
+
+  *    https://github.com/anynines/web[Web Sample^] with hoisie/web, no services; the simplest way to write web applications in the Go programming language. It's ideal for writing simple, performant backend web services.
+  *    https://github.com/anynines/simple-web-go[Simple Web Go^] - go with net / http, log4go, no services; This is a minimum webserver for running a go written web app on the anynines platform.
+  *    https://github.com/anynines/a9s-go-example[a9s Go Example^] with net / http, no services; A very simple 'hello world' webserver demonstrating how to run an App written in Go to run on Anynines Cloud Foundry platform.
+
+=== Scala
+
+  *    not available yet
+
+=== Jekyll
+
+  *    not available yet
+
+=== Java
+
+  *    https://github.com/anynines/play-example-postgresql[Play Framework Example^] - Play, PostgreSQL service; This application uses the play framework and PostgreSQL as underlying database service. 
+  *    https://github.com/anynines/grails-example[Grails Example^] - Grails, no services; Hello World Grails Application Example
+  *    https://github.com/anynines/springmvc-hibernate-template[Springmvc Hibernate Template^] - Spring,redis service, PostgreSQL service; Spring Sample Application using Redis and PostgreSQL Services
+

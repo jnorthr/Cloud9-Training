@@ -7,5 +7,5 @@ get "/download", forward: "/WEB-INF/pages/download.gtpl"
 get "/anynines.war",  forward: "/WEB-INF/downloads/anynines.war" 
 get "/anynines.zip",  forward: "/WEB-INF/downloads/anynines.zip" 
 get "/facts", forward: "/WEB-INF/pages/facts.gtpl"
-get "/samples", forward: "/anynines.html"
+get "/samples", forward: "/WEB-INF/pages/samples.gtpl"
 
