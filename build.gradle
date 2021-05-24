@@ -49,7 +49,7 @@ cloudfoundry {
   username=''  	
   password=''  	// don't put quote marks around the value after the =            cf.password=*******
   target='https://api.de.a9s.eu' 		// cloud foundry api target address for http://www.anynines.com/
-  organization = 'martin_j_quickman_googlemail_com'
+  organization = 'man_googlemail_com'
   space = 'test'
   file = new File("$buildDir/libs/Cloud9-Training.war")
   uri = 'http://cloudnines.de.a9sapp.eu'
